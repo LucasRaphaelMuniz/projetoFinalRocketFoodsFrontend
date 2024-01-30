@@ -18,6 +18,7 @@ export const Container = styled.div`
   }
 
 
+
 `
 
 export const Marca = styled.div`
@@ -72,6 +73,8 @@ export const Form = styled.form`
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     }
+
+
 
     @media (min-width: 1024px) {
     padding: 6.4rem;

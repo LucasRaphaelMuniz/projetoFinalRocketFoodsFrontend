@@ -7,5 +7,6 @@ export const Container = styled.section`
     font-weight: 400;
     text-align: left;
     margin-bottom: 0.8rem;
+    margin-top: 3.2rem;
   }
 `;

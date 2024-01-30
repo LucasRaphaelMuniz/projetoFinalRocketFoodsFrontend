@@ -18,14 +18,6 @@ export const Container = styled.div`
     border: 0;
     border-radius: 0.8rem;
 
-    margin-bottom: 3.2rem;
 
-    &::placeholder {
-      color: ${({ theme }) => theme.COLORS.LIGHT_500};
-    }
-
-    &:focus {
-      border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
-    }
   }
 `;

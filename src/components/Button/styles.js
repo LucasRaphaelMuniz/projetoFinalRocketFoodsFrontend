@@ -8,11 +8,18 @@ export const Container = styled.button`
     height: 4.8rem;
     border: 0;
     padding: 0 12px;
-    margin-top: 12px;
-    border-radius: 1rem;
+    border-radius: 10px;
     font-weight: 500;
-
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
     &:disabled {
         opacity: 0.5;
     }
+
+    
+
+
 `;

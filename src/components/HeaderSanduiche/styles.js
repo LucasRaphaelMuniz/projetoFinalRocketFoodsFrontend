@@ -5,7 +5,7 @@ export const Container = styled.header`
     justify-content: space-between;
 
     height: 10rem;
-    width: 100%;
+ 
     padding: 5.6rem 2.8rem 2.4rem;
     display: flex;
     position: sticky;
@@ -14,10 +14,13 @@ export const Container = styled.header`
     
     background-color: ${({ theme }) => theme.COLORS.DARK_700}; 
 
-    button:last-child {
-    width: auto;
-    padding: 0;
-    background: none;
+    > div {
+        display: flex;
+        margin-right: auto;
+
+        > img {
+            margin-right: 1.6rem;
+        }
+        
     }
-    
 `

@@ -40,7 +40,11 @@ export function SignUp() {
                     />
                 </Section>
 
-            <Button title="Criar Conta"/>
+                <Section>
+
+                    <Button title="Criar Conta"/>
+                </Section>
+
                 
             <a href="#">
                 Já tenho uma conta

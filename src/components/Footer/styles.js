@@ -10,8 +10,10 @@ export const Container = styled.footer`
   display: flex;
   justify-content: space-between;
   gap: 0.8rem;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  bottom: 0;
+
+  padding: 10px;
   z-index: 1000;
   background-color: ${({ theme }) => theme.COLORS.DARK_600};
 

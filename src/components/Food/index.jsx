@@ -9,8 +9,11 @@ import { Button } from '../../components/Button'
 
 import pratoInicio from '../../assets/pratoInicio.svg'
 
+import { Quantidade } from '../../components/Quantidade'
 
-export function Food() {
+
+
+export function Food({title, price}) {
   return (
     <Container>
         <FiHeart
@@ -20,12 +23,14 @@ export function Food() {
 
         <Title>
             <h2>
-                Suco de maracujá
+                {title}
             </h2>
             <RxCaretRight/>
         </Title>
 
-        <span>R$ 13,97</span>
+        <span>R$ {price}</span>
+
+        <Quantidade/>
 
         <Button title="incluir"/>
     </Container>

@@ -70,6 +70,9 @@ export const Form = styled.form`
       font-size: 3.2rem;
     }
 
+    > section {
+      margin-top: 3.2rem;
+    }
 
   }
 

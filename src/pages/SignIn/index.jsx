@@ -33,7 +33,11 @@ export function SignIn() {
                     />
                 </Section>
 
-            <Button title="Entrar"/>
+                <Section>
+                    <Button title="Entrar"/>
+
+                </Section>
+
                 
             <a href="#">
                 Criar uma conta

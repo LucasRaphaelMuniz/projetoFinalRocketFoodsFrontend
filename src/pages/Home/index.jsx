@@ -4,6 +4,8 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Food } from '../../components/Food'
 import { Section } from '../../components/Section'
+import { Quantidade } from '../../components/Quantidade'
+
 
 import mobileBannerHome from "../../assets/mobileBannerHome.svg";
 
@@ -26,10 +28,8 @@ export function Home() {
                     <Content>
                         <Section title="Refeições">
                             <colunas-container>
-                                <Food/>
-                                <Food/>
-                                <Food/>
-                                <Food/>
+                                <Food title="Suco de Laranja" price="11,93"/>
+                                <Food title="Suco de Laranja" price="11,93"/>
 
                             </colunas-container>
                             
@@ -38,15 +38,15 @@ export function Home() {
 
                         <Section title="Pratos principais">
                             <colunas-container>
-                                <Food/>
-                                <Food/>
+                                <Food title="Suco de Laranja" price="11,93"/>
+                                <Food title="Suco de Laranja" price="11,93"/>
                             </colunas-container>
                         </Section>    
 
                         <Section title="Bebidas">
                             <colunas-container>
-                                <Food/>
-                                <Food/>
+                                <Food title="Suco de Laranja" price="11,93"/>
+                                <Food title="Suco de Laranja" price="11,93"/>
                             </colunas-container>
                         </Section>    
                     </Content>
