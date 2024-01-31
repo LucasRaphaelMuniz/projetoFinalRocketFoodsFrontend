@@ -9,10 +9,6 @@ export default {
       LIGHT_600: "#76797B",
       LIGHT_700: "#4D585E",
 
-      DARK_400: "#",
-      DARK_800: "#",
-      DARK_600: "#",
-
       DARK_100: "#000405",
       DARK_200: "#00070A",
       DARK_300: "#000204",
@@ -36,8 +32,8 @@ export default {
 
       MINT_100: "#04D361",
 
-      CAKE_100: "#82F3FF",
-      CAKE_200: "#065E7C",
+      CAKE_100: "#065E7C",
+      CAKE_200: "#82F3FF",
   
     }
   }

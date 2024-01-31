@@ -1,6 +1,6 @@
 import { Container, Title} from "./styles";
 
-import { FiHeart } from "react-icons/fi";
+import { FiHeart, FiEdit  } from "react-icons/fi";
 import { RxCaretRight } from "react-icons/rx";
 
 
@@ -13,26 +13,50 @@ import { Quantidade } from '../../components/Quantidade'
 
 
 
-export function Food({title, price}) {
+export function Food({title, price, isAdmin = true }) {
   return (
-    <Container>
-        <FiHeart
-        />
 
-        <img src={pratoInicio} alt="" />
+    <>
+    {isAdmin ? (
+      <Container>
+          <FiEdit
+          />
+  
+          <img src={pratoInicio} alt="" />
+  
+          <Title>
+              <h2>
+                  {title}
+              </h2>
+              <RxCaretRight/>
+          </Title>
+  
+          <span>R$ {price}</span>
+  
+  
+      </Container>
+    ) : (
+      <Container>
+      <FiHeart
+      />
 
-        <Title>
-            <h2>
-                {title}
-            </h2>
-            <RxCaretRight/>
-        </Title>
+      <img src={pratoInicio} alt="" />
 
-        <span>R$ {price}</span>
+      <Title>
+          <h2>
+              {title}
+          </h2>
+          <RxCaretRight/>
+      </Title>
 
-        <Quantidade/>
+      <span>R$ {price}</span>
 
-        <Button title="incluir"/>
+      <Quantidade/>
+
+      <Button title="incluir"/>
     </Container>
+    )}
+  </>
+    
   );
 }

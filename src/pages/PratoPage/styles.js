@@ -30,7 +30,8 @@ export const Content = styled.div`
 
 
     img {
-        width: 2.2rem;
+        width: 3.2rem;
+        height: 3.2rem;
     }
 
 `

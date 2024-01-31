@@ -1,15 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.footer`
-    display: flex;
+
+  display: flex;
   height: 29.2rem;
-  max-width: 21rem;
+  width: 21rem;
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
-  border-radius: 1rem;
+  border-radius: 0.8rem;
+  border: 1px solid ${({ theme }) => theme.COLORS.DARK_300};
+
   padding: 2.4rem;
   flex-direction: column;
   align-items: center;
   position: relative;
+  justify-content: center;
   gap: 1.2rem;
 
 
@@ -18,7 +22,8 @@ export const Container = styled.footer`
     position: absolute;
     top: 1.6rem;
     right: 1.6rem;
-    height: 2.4rem;
+    width: 2.4rem;
+    height: 2.2rem;
     
   }
 
@@ -30,8 +35,14 @@ export const Container = styled.footer`
     line-height: 100%;
     color: ${({ theme }) => theme.COLORS.CAKE_200};
     font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
 
   }
+
+  border-radius: 0.5rem;
+  background: var(--Dark-Dark-200, #00070A);
 `
 
 export const Title = styled.div`

@@ -22,6 +22,16 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     margin: 3.6rem;
-    
+
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+      
+      font-weight: 300;
+    }
+
+
 
 `

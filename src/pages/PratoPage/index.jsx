@@ -7,21 +7,24 @@ import { Footer } from '../../components/Footer';
 
 import { ButtonText } from '../../components/ButtonText';
 
-import Voltar from '../../assets/setaVoltar.svg';
+import { RxCaretLeft } from "react-icons/rx";
+
 
 
 
 
 export function PratoPage() {
     return (
-        <Container>
+
             
         <Container>
             <Header/>
 
             <Content>
-                <img src={Voltar} alt="" />
-                <ButtonText title="voltar"/>
+                <ButtonText title="voltar" 
+                    icon={RxCaretLeft}
+                    style={{ fontSize: '2.4rem' }} 
+                    />
             </Content>
                 <main>
                     <Prato/>
@@ -31,7 +34,5 @@ export function PratoPage() {
             <Footer/>
         </Container>
 
-
-        </Container>
     )
 }

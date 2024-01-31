@@ -8,12 +8,16 @@ import { ButtonText } from '../../components/ButtonText'
 
 
 
-export function Menu() {
+export function Menu({isAdmin = true}) {
     return (
         <Container>
             <HeaderSanduiche/>
             <Content>
                 <Search/>
+                {isAdmin ? (
+                <ButtonText title="Novo Prato"/>
+
+                ) : null}
                 <ButtonText title="Sair"/>
             </Content>
             <Footer/>

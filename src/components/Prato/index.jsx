@@ -7,7 +7,7 @@ import { Tag } from '../Tag'
 import carrinho from "../../assets/carrinho.svg"
 
 
-export function Prato({price, title, description}){
+export function Prato({price, title, description, isAdmin = false}){
   return(
     <Container>
         <img src={pratoInicio} alt="" />
@@ -24,15 +24,23 @@ export function Prato({price, title, description}){
         </section>
         
         <div>
-          <Quantidade/>        
+
+        {!isAdmin && <Quantidade />}
+
+        {isAdmin ? (
+          
+          <Button title="Editar Prato">
+
+          </Button>
+        ) : (
+
 
           <Button title="">
             <img src={carrinho} alt="" />
             Pedir - R$ {"50,00"}
-
           </Button>
-
-        </div>
+        )}
+      </div>
         
 
     </Container>
