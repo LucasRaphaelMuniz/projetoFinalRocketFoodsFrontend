@@ -16,20 +16,26 @@ import { RxCaretLeft } from "react-icons/rx";
 import { FiUpload } from "react-icons/fi";
 import { RiArrowDownSLine } from "react-icons/ri";
 
+import { Link } from 'react-router-dom'
 
 
 
 
 
 
-export function NovoPrato() {
+
+export function NovoPrato({isAdmin}) {
     return (
             
         <Container>
-            <Header/>
+            <Header
+                isAdmin={isAdmin}
+            />
 
             <Content>
-                <ButtonText title="voltar" icon={RxCaretLeft}/>
+                <Link to="/">                
+                    <ButtonText title="voltar" icon={RxCaretLeft}/>
+                </Link>
 
 
 
@@ -94,10 +100,14 @@ export function NovoPrato() {
                 <Textarea
                     placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                 /> 
+                <Link to="/">
+
                 <Button 
                 className="changeColorButton"
                 title="Salvar Alterações"
                 />
+                </Link>        
+
             </section>        
         
             

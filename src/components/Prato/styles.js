@@ -7,6 +7,7 @@ export const Container = styled.div`
     align-items: center;
     text-align: center;
     padding: 3.2rem;
+    overflow-x: auto;
 
 
 
@@ -41,17 +42,21 @@ export const Container = styled.div`
 
     
 
-    > div:last-child {
+
+    .seu-contenedor {
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        margin-top: 4.8rem;
+        margin-top: 3.2rem;
         gap: 1.6rem;
         width: 35rem;
         border-radius: 5px;
+        }
 
-
-    }
+        .admin {
+        display: block; /* ou qualquer outro valor que você deseja usar quando isAdmin é verdadeiro */
+        /* Outros estilos específicos para quando isAdmin é true */
+        }
 
 `;

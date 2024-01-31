@@ -5,13 +5,18 @@ import marca from "../../assets/marcaPoligono.svg"
 import carrinho from "../../assets/carrinho.svg"
 import admin from "../../assets/admin.svg"
 
+import { Link } from 'react-router-dom'
 
-export function Header({ isAdmin = true }) {
+
+
+export function Header({ isAdmin}) {
     return (
       <>
         {isAdmin ? (
           <Container>
-            <img src={tresBarrasMenu} alt="" />
+            <Link to="/menu">
+              <img src={tresBarrasMenu} alt="" /> 
+            </Link>
             <section>
                 <img src={marca} alt="" />
                 <h1>food explorer</h1>
@@ -23,7 +28,9 @@ export function Header({ isAdmin = true }) {
         </Container>
         ) : (
           <Container>
-            <img src={tresBarrasMenu} alt="" />
+            <Link to="/menu">
+              <img src={tresBarrasMenu} alt="" /> 
+            </Link>
             <section>
                 <img src={marca} alt="" />
                 <h1>food explorer</h1>

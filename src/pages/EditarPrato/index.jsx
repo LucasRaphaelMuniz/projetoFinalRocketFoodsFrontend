@@ -16,20 +16,22 @@ import { RxCaretLeft } from "react-icons/rx";
 import { FiUpload } from "react-icons/fi";
 import { RiArrowDownSLine } from "react-icons/ri";
 
+import { Link } from 'react-router-dom'
 
 
 
 
 
-
-export function EditarPrato() {
+export function EditarPrato(isAdmin={isAdmin} ) {
     return (
             
         <Container>
-            <Header/>
+            <Header isAdmin={isAdmin} />
 
             <Content>
-                <ButtonText title="voltar" icon={RxCaretLeft}/>
+                <Link to="/">                
+                    <ButtonText title="voltar" icon={RxCaretLeft}/>
+                </Link>
 
 
 
@@ -97,16 +99,19 @@ export function EditarPrato() {
                 /> 
                 </Section> 
 
-                <div className="ordenarBotoes">
+                <Link to="/" className="ordenarBotoes">
                     <Button 
                     className="changeColorButtonExcluir"
                     title="Excluir"
                     />
+          
+
                     <Button 
                     className="changeColorButton"
                     title="Salvar Alterações"
                     />
-                </div>
+
+                </Link>
                 
             </section>        
         

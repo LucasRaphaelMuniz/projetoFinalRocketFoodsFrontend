@@ -5,6 +5,11 @@ import { Footer } from '../../components/Footer'
 import { Search } from '../../components/Search'
 import { ButtonText } from '../../components/ButtonText'
 
+import { Link } from 'react-router-dom'
+
+
+
+
 
 
 
@@ -15,7 +20,9 @@ export function Menu({isAdmin = true}) {
             <Content>
                 <Search/>
                 {isAdmin ? (
-                <ButtonText title="Novo Prato"/>
+                <Link to="/novoprato">
+                    <ButtonText title="Novo Prato"/>
+                </Link>
 
                 ) : null}
                 <ButtonText title="Sair"/>

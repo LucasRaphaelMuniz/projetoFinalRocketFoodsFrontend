@@ -47,13 +47,6 @@ export const Content = styled.div`
     font-family: 'Poppins', sans-serif;
 
 
-
-
-    img {
-        font-size: 1.6rem;
-        margin-right: 1rem;
-    }
-
     h1 {
         height: 4.5rem;
     }
@@ -68,10 +61,13 @@ export const Content = styled.div`
     }
 
     }
-
+  
     .ordenarBotoes {
       display: flex;
       gap: 3.2rem;
+      justify-content: space-between;
+
+
       .changeColorButton {
         background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
         
@@ -82,6 +78,12 @@ export const Content = styled.div`
       }
 
     }
+
+    .link {
+        /* Adicione estilos específicos para o link se necessário */
+        text-decoration: none; /* Remova a decoração padrão do link */
+        color: inherit; /* Herde a cor do texto do pai */
+      }
     
 
     

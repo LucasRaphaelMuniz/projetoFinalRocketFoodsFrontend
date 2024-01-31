@@ -5,15 +5,20 @@ import { Footer } from '../../components/Footer'
 import { Food } from '../../components/Food'
 import { Section } from '../../components/Section'
 
+import { Link } from 'react-router-dom'
+
+
 
 import mobileBannerHome from "../../assets/mobileBannerHome.svg";
 
 
 
-export function Home() {
+export function Home({isAdmin}) {
     return (
         <Container>
-            <Header/>
+            <Header
+                isAdmin={isAdmin} 
+            />
                 <main>
                     <div>
                         <header>
@@ -27,8 +32,9 @@ export function Home() {
                     <Content>
                         <Section title="Refeições">
                             <colunas-container>
-                                <Food title="Suco de Laranja" price="11,93"/>
-                                <Food title="Suco de Laranja" price="11,93"/>
+                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
+                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
+                                
 
                             </colunas-container>
                             
@@ -37,15 +43,15 @@ export function Home() {
 
                         <Section title="Pratos principais">
                             <colunas-container>
-                                <Food title="Suco de Laranja" price="11,93"/>
-                                <Food title="Suco de Laranja" price="11,93"/>
+                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
+                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
                             </colunas-container>
                         </Section>    
 
                         <Section title="Bebidas">
                             <colunas-container>
-                                <Food title="Suco de Laranja" price="11,93"/>
-                                <Food title="Suco de Laranja" price="11,93"/>
+                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
+                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
                             </colunas-container>
                         </Section>    
                     </Content>

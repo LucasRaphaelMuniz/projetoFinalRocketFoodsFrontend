@@ -14,7 +14,7 @@ export const Container = styled.header`
     
     background-color: ${({ theme }) => theme.COLORS.DARK_700}; 
 
-    > div {
+    Link {
         display: flex;
         margin-right: auto;
 

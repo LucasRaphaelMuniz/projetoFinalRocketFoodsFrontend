@@ -1,18 +1,19 @@
 import { Container } from './styles';
 
-import close from "../../assets/close.svg"
+import { FiX } from "react-icons/fi";
 import { ButtonText } from '../../components/ButtonText'
 
+import { Link } from 'react-router-dom'
 
 
-export function HeaderSanduiche(){
+
+
+export function HeaderSanduiche({isAdmin}){
     return(
         <Container>
-            <div>
-                <img src={close} alt="" />
-
-                <ButtonText title="Menu"/>
-            </div>
+            <Link to="/">
+                <ButtonText title="Menu" icon={FiX} />
+            </Link>
 
 
             

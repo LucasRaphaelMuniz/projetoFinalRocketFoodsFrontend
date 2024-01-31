@@ -6,6 +6,8 @@ import { Section } from '../../components/Section'
 
 import marca from "../../assets/marcaLogo.svg"
 
+import { Link } from 'react-router-dom'
+
 
 
 export function SignIn() {
@@ -39,9 +41,9 @@ export function SignIn() {
                 </Section>
 
                 
-            <a href="#">
+            <Link to="/register">
                 Criar uma conta
-            </a>
+            </Link>
 
             </Form>
 

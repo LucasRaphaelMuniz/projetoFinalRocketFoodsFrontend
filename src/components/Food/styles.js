@@ -17,15 +17,41 @@ export const Container = styled.footer`
   gap: 1.2rem;
 
 
+  section {
+    display: block;
 
-  > svg {
-    position: absolute;
-    top: 1.6rem;
-    right: 1.6rem;
+    > svg {
+      width: 2.4rem;
+      height: 2.2rem;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      z-index: 1000;
+      position: relative;
+
+      top: 1.3rem;
+      right: -7rem;
+    }
+    
+
+    
+    }
+
+  > a {
+    position: relative;
+
+    > svg {
     width: 2.4rem;
     height: 2.2rem;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    z-index: 1000;
+    position: relative;
+    top: -3rem;
+    right: -7rem;
+
     
-  }
+    }
+
+   }
+  
 
   > img {
     max-width: 8.8rem;
@@ -42,7 +68,6 @@ export const Container = styled.footer`
   }
 
   border-radius: 0.5rem;
-  background: var(--Dark-Dark-200, #00070A);
 `
 
 export const Title = styled.div`

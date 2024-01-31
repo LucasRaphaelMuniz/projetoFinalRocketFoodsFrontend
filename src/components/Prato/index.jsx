@@ -6,6 +6,9 @@ import { Quantidade } from '../Quantidade'
 import { Tag } from '../Tag'
 import carrinho from "../../assets/carrinho.svg"
 
+import { Link } from 'react-router-dom'
+
+
 
 export function Prato({price, title, description, isAdmin = false}){
   return(
@@ -23,23 +26,26 @@ export function Prato({price, title, description, isAdmin = false}){
 
         </section>
         
-        <div>
+        <div className={`seu-contenedor ${isAdmin ? 'admin' : ''}`}>
 
-        {!isAdmin && <Quantidade />}
+          {!isAdmin && <Quantidade />}
 
-        {isAdmin ? (
-          
-          <Button title="Editar Prato">
+          {isAdmin ? (
+            <Link to="/editarprato/:id">
+              <Button title="Editar Prato">
+              </Button>
 
-          </Button>
-        ) : (
+            </Link>
 
+          ) : (
 
-          <Button title="">
-            <img src={carrinho} alt="" />
-            Pedir - R$ {"50,00"}
-          </Button>
-        )}
+            <Link to="/">
+              <Button title="">
+                <img src={carrinho} alt="" />
+                Pedir - R$ {"50,00"}
+              </Button>
+            </Link>
+          )}
       </div>
         
 

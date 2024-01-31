@@ -11,17 +11,23 @@ import pratoInicio from '../../assets/pratoInicio.svg'
 
 import { Quantidade } from '../../components/Quantidade'
 
+import { Link } from 'react-router-dom'
 
 
-export function Food({title, price, isAdmin = true }) {
+
+
+export function Food({title, price, isAdmin}) {
   return (
 
     <>
     {isAdmin ? (
+      <Link to="/prato/:id">          
+
       <Container>
-          <FiEdit
-          />
-  
+          <Link to="/editarprato/:id">          
+            <FiEdit/>
+          </Link>
+
           <img src={pratoInicio} alt="" />
   
           <Title>
@@ -35,10 +41,16 @@ export function Food({title, price, isAdmin = true }) {
   
   
       </Container>
+      </Link>
+
+
     ) : (
+      <Link to="/prato/:id">          
+
       <Container>
-      <FiHeart
-      />
+      <section>
+        <FiHeart/>
+      </section>
 
       <img src={pratoInicio} alt="" />
 
@@ -55,7 +67,9 @@ export function Food({title, price, isAdmin = true }) {
 
       <Button title="incluir"/>
     </Container>
-    )}
+    </Link>
+    )
+    }
   </>
     
   );

@@ -1,5 +1,8 @@
 import { Container, Form, Marca } from "./styles";
 
+import { Link } from 'react-router-dom'
+
+
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { Section } from '../../components/Section'
@@ -46,9 +49,9 @@ export function SignUp() {
                 </Section>
 
                 
-            <a href="#">
+            <Link to="/">
                 Já tenho uma conta
-            </a>
+            </Link>
 
             </Form>
 
