@@ -9,8 +9,8 @@ export function PratoItem({isNew, value, onClick, placeholder,...rest}) {
       <input
         type="text"
         value={value}
-        placeholder="Adicionar"
         readOnly={!isNew}
+        {...rest}
       />
       <button
         type="button"

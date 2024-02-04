@@ -1,4 +1,5 @@
 import { Routes, Route} from 'react-router-dom'
+import { useAuth } from '../hooks/auth'
 
 import { Home } from '../pages/Home'
 import { Menu } from '../pages/Menu'
@@ -6,7 +7,14 @@ import { PratoPage } from '../pages/PratoPage'
 import { NovoPrato } from '../pages/NovoPrato'
 import { EditarPrato } from '../pages/EditarPrato'
 
-export function AppRoutes({isAdmin = false}){
+
+
+export function AppRoutes(){
+    const { user } = useAuth()
+
+    const isAdmin = user ? user.isAdmin : false;
+
+
     return(
         <Routes>
             <Route path="/" element={<Home isAdmin={isAdmin}/>} />

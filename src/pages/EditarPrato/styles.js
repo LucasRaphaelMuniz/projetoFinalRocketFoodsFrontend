@@ -79,11 +79,7 @@ export const Content = styled.div`
 
     }
 
-    .link {
-        /* Adicione estilos específicos para o link se necessário */
-        text-decoration: none; /* Remova a decoração padrão do link */
-        color: inherit; /* Herde a cor do texto do pai */
-      }
+
     
 
     

@@ -1,5 +1,7 @@
 import { Container, Content } from "./styles";
 
+import { useState, useEffect } from 'react'
+
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Food } from '../../components/Food'
@@ -8,12 +10,17 @@ import { Section } from '../../components/Section'
 import { Link } from 'react-router-dom'
 
 
-
 import mobileBannerHome from "../../assets/mobileBannerHome.svg";
+import { api } from "../../services/api";
 
 
 
 export function Home({isAdmin}) {
+
+    const [search, setSearch] = useState("")
+
+
+
     return (
         <Container>
             <Header
