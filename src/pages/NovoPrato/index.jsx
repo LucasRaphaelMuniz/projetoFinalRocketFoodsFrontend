@@ -19,7 +19,6 @@ import {api} from '../../services/api'
 
 import { Link, useNavigate } from 'react-router-dom'
 
-import CircularJSON from 'circular-json';
 
 
 export function NovoPrato({isAdmin}) {

@@ -5,6 +5,7 @@ import { RxCaretRight } from "react-icons/rx";
 
 
 import { Button } from '../../components/Button'
+import { useState, useEffect } from 'react'
 
 
 import pratoInicio from '../../assets/pratoInicio.svg'
@@ -13,39 +14,43 @@ import { Quantidade } from '../../components/Quantidade'
 
 import { Link } from 'react-router-dom'
 
+import { api } from '../../services/api';
 
 
 
-export function Food({title, price, isAdmin}) {
+
+export function Food({ data = {}, isAdmin, ...rest }) {
+
   return (
 
     <>
     {isAdmin ? (
-      <Link to="/prato/:id">          
+      <Link to={`/prato/${data.id}`}>          
 
-      <Container>
-          <Link to="/editarprato/:id">          
+      <Container {...rest} >
+          <Link to={`/editarprato/${data.id}`}>          
             <FiEdit/>
           </Link>
-
+          
           <img src={pratoInicio} alt="" />
   
           <Title>
               <h2>
-                  {title}
+                  {data.nome}
               </h2>
               <RxCaretRight/>
           </Title>
   
-          <span>R$ {price}</span>
-  
+          <span>R$ {data.preco}</span>
+          
+      
   
       </Container>
       </Link>
-
+  
 
     ) : (
-      <Link to="/prato/:id">          
+      <Link to={`/prato/${data.id}`}>          
 
       <Container>
       <section>
@@ -56,12 +61,12 @@ export function Food({title, price, isAdmin}) {
 
       <Title>
           <h2>
-              {title}
+              {data.nome}
           </h2>
           <RxCaretRight/>
       </Title>
 
-      <span>R$ {price}</span>
+      <span>R$ {data.preco}</span>
 
       <Quantidade/>
 

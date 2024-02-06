@@ -6,6 +6,24 @@ export const AuthConext = createContext({})
 
 function AuthProvider({ children }) {
     const [data, setData] = useState({})
+
+
+    // async function editarPrato({ foods }){
+    //     try {
+
+    //         await api.put("/foods", foods)
+    //         setData({ foods })
+    //         alert("Prato atualizado com sucesso!")
+            
+
+    //     } catch (error){
+    //         if (error.res) {
+    //             alert(error.res.data.message)
+    //         } else {
+    //             alert("Não foi possivel editar o prato.")
+    //         }
+    //     }
+    // }
     
     
     async function signIn({email, password}) {

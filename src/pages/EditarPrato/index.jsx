@@ -17,12 +17,17 @@ import { FiUpload } from "react-icons/fi";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+
+
 
 
 
 
 
 export function EditarPrato(isAdmin={isAdmin} ) {
+
+
     return (
             
         <Container>

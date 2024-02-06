@@ -6,19 +6,28 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 
 import { ButtonText } from '../../components/ButtonText';
-
+import { useState, useEffect } from 'react';
 import { RxCaretLeft } from "react-icons/rx";
 
 import { Link } from 'react-router-dom'
-
-
-
-
-
+import { api } from "../../services/api";
+import { useParams } from 'react-router-dom'
 
 
 
 export function PratoPage({isAdmin}) {
+    const [data, setData] = useState(null);
+
+    const params = useParams()
+
+    useEffect(() => {
+        async function fetchData() {
+            const res = await api.get(`/foods/${params.id}`)
+            setData(res.data)
+        }
+        fetchData()
+    }, [params.id]); 
+
     return (
 
             
@@ -37,7 +46,8 @@ export function PratoPage({isAdmin}) {
                 
             </Content>
                 <main>
-                    <Prato isAdmin={isAdmin} />
+
+                {data && <Prato data={data} isAdmin={isAdmin} />}
                          
 
                 </main>

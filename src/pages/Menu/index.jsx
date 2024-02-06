@@ -10,7 +10,6 @@ import { Link, useNavigate } from 'react-router-dom'
 
 export function Menu({isAdmin}) {
 
-    const [search, setSearch] = useState("")
 
     const navigate = useNavigate();    
     
