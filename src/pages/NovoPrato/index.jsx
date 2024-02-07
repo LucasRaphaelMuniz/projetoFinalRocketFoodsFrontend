@@ -24,16 +24,18 @@ import { Link, useNavigate } from 'react-router-dom'
 export function NovoPrato({isAdmin}) {
 
     const [ imagem, setImagem] = useState(null)
+    const [ imagemFile, setAvatarFile] = useState(null)
+
     const [ nome, setNome] = useState("")
     const [ categoria, setCategoria] = useState("")
     const [ preco, setPreco] = useState("")   
     const [ descricao, setDescricao] = useState(" ")
 
 
+    const navigate = useNavigate()
     const [ingredientes, setIngredientes] = useState([])
     const [newIngredientes, setNewIngredientes] = useState("")
 
-    const navigate = useNavigate()
 
 
     function handleAddIngredientes(){
@@ -47,7 +49,8 @@ export function NovoPrato({isAdmin}) {
 
     function handleChangeImagem(event){
         const file = event.target.files[0];
-    
+        setAvatarFile(file)
+
         const imagePreview = URL.createObjectURL(file);
         setImagem(imagePreview);
     }
@@ -84,6 +87,7 @@ export function NovoPrato({isAdmin}) {
             descricao,
             ingredientes
         })
+
 
         alert("Prato criado com sucesso!")
         navigate("/")

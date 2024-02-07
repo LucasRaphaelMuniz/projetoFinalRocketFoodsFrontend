@@ -16,16 +16,114 @@ import { RxCaretLeft } from "react-icons/rx";
 import { FiUpload } from "react-icons/fi";
 import { RiArrowDownSLine } from "react-icons/ri";
 
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { Link, useNavigate  } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
+import { useAuth } from '../../hooks/auth'
+
+import { useParams } from 'react-router-dom'
+import { api } from "../../services/api";
 
 
 
 
 
 
+export function EditarPrato(isAdmin={isAdmin}, data) {
+    const params = useParams()
+    const { user } = useAuth()
+    const user_id = user.id
 
-export function EditarPrato(isAdmin={isAdmin} ) {
+
+
+    const [food, setFood] = useState([])
+
+    useEffect(() => {
+        async function fetchFoods(){
+            const res = await api.get(`/foods/${params.id}`)
+            setFood(res.data)
+
+        }
+        fetchFoods()
+    }, [])
+
+
+    const [ imagem, setImagem] = useState(food.imagem)
+    const [ imagemFile, setAvatarFile] = useState(null)
+    
+
+
+    const [ nome, setNome] = useState(food.nome)
+    const [ categoria, setCategoria] = useState(food.categoria)
+    const [ preco, setPreco] = useState(food.preco)   
+    const [ descricao, setDescricao] = useState(food.descricao)
+
+
+    const [ingredientes, setIngredientes] = useState([])
+    const [newIngredientes, setNewIngredientes] = useState("")
+
+    
+
+    
+
+    async function handleRemove(){
+        const confirm = window.confirm("Deseja realmente excluir este prato?") 
+
+        if(confirm) {
+            await api.delete(`foods/${params.id}`)
+            navigate("/")
+
+        }
+    }
+
+    useEffect(() => {
+        async function fetchFoods(){
+            const res = await api.get(`/foods/${params.id}`)
+            setFood(res.data)
+            setIngredientes(res.data.ingredientes); 
+        }
+        fetchFoods()
+    }, []);
+
+
+    function handleAddIngredientes(){
+        setIngredientes(prevState => [...prevState, newIngredientes])
+        setNewIngredientes("")
+    }
+
+    function handleRemoveIngredientes(deleted){
+        setIngredientes(prevState => prevState.filter(ingredientes => ingredientes !== deleted))
+    }
+
+    function handleChangeImagem(event){
+        const file = event.target.files[0];
+        setAvatarFile(file)
+
+        const imagePreview = URL.createObjectURL(file);
+        setImagem(imagePreview);
+    }
+
+    
+
+    const navigate = useNavigate()
+
+    async function handleUpdate() {
+
+        await api.put(`/foods/editarprato/${params.id}`, {
+            imagem,
+            nome,
+            categoria,
+            preco,
+            descricao,
+            ingredientes,
+            user_id
+        })
+
+        alert("Prato")
+        navigate("/")
+
+    }
+    
 
 
     return (
@@ -52,6 +150,8 @@ export function EditarPrato(isAdmin={isAdmin} ) {
                     <input 
                         id="image" 
                         type="file"
+                        onChange={handleChangeImagem}
+
                     />
                     </label>
                     </Image>         
@@ -60,22 +160,31 @@ export function EditarPrato(isAdmin={isAdmin} ) {
                 <Section title="Nome"/>     
                 <Input 
                     className="changeColor"
-                    placeholder="Salada César"
+                    placeholder={food.nome}
+                    onChange={e => setNome(e.target.value)}
                 />     
 
                 <Section title="Categoria">
                     <Category className="category">
                         <label htmlFor="category">
-                        <select 
-                            id="category" 
+                        <select
+                            id="category"
+                            value={categoria || food.categoria}
+                            onChange={(e) => setCategoria(e.target.value)}
                             
-
-                        >
-                            <option value="">Selecionar</option>
-                            <option value="meal">Refeição</option>
-                            <option value="dessert">Sobremesa</option>
-                            <option value="beverage">Bebida</option>
-                        </select>
+                            >
+                            <option value=""> {food.categoria} </option>
+                            {!food.categoria && <option value="">Selecionar</option>}
+                            {food.categoria != "Refeição" && (
+                                <option value="refeicao">Refeição</option>
+                            )}
+                            {food.categoria != "Sobremesa" && (
+                                <option value="sobremesa">Sobremesa</option>
+                            )}
+                            {food.categoria != "Bebida" && (
+                                <option value="bebida">Bebida</option>
+                            )}
+                            </select>
 
                         <RiArrowDownSLine size={"2.4rem"} />
                         </label>
@@ -84,23 +193,43 @@ export function EditarPrato(isAdmin={isAdmin} ) {
 
                 <Section title="Igredientes" > 
                     <div className="tags">
-                        <PratoItem value="Pão Naan" /> 
-                        <PratoItem isNew /> 
+
+                        {
+                            ingredientes.map((ingredientes, index) => (
+                                <PratoItem 
+                                    key={String(index)}
+                                    value={ingredientes}
+                                    onClick={() => {handleRemoveIngredientes(ingredientes)}}
+                                /> 
+                            ))
+
+                        }
+                        
+                        <PratoItem 
+                            isNew 
+                            onChange={e => setNewIngredientes(e.target.value)}
+                            value={newIngredientes}
+                            onClick={handleAddIngredientes}
+                        /> 
                     </div>
 
                     
-                </Section>   
+                </Section> 
 
                 <Section title="Preço">     
                 <Input
                     className="changeColor"
-                    placeholder="R$ 40,00"
+                    placeholder={food.preco}
+                    onChange={(e) => setPreco(e.target.value)}
+
                 /> 
                 </Section> 
 
                 <Section title="Descrição">     
                 <Textarea
-                    placeholder="A Salada César é uma opção refrescante para o verão."
+                    placeholder={food.descricao}
+                    onChange={(e) => setDescricao(e.target.value)}
+                    
                 /> 
                 </Section> 
 
@@ -108,12 +237,14 @@ export function EditarPrato(isAdmin={isAdmin} ) {
                     <Button 
                     className="changeColorButtonExcluir"
                     title="Excluir"
+                    onClick={handleRemove}
                     />
           
 
                     <Button 
                     className="changeColorButton"
                     title="Salvar Alterações"
+                    onClick={handleUpdate}
                     />
 
                 </Link>

@@ -49,10 +49,12 @@ export function Home({isAdmin}, nome) {
                         <Section title="Refeições">
                             <colunas-container>
                             {
-                                foods.map((food) => (
+                                foods
+                                .filter(food => food.categoria === "Refeição")
+                                .map((food) => (
                                     <Food key={String(food.id)} data={food} isAdmin={isAdmin}/>
                                 ))
-                            }                         
+                            }                       
 
                             </colunas-container>
                             
@@ -61,15 +63,25 @@ export function Home({isAdmin}, nome) {
 
                         <Section title="Pratos principais">
                             <colunas-container>
-                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
-                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
+                            {
+                                foods
+                                .filter(food => food.categoria === "Sobremesa")
+                                .map((food) => (
+                                    <Food key={String(food.id)} data={food} isAdmin={isAdmin}/>
+                                ))
+                            } 
                             </colunas-container>
                         </Section>    
 
                         <Section title="Bebidas">
                             <colunas-container>
-                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
-                                <Food title="Suco de Laranja" price="11,93" isAdmin={isAdmin} />
+                            {
+                                foods
+                                .filter(food => food.categoria === "Bebida")
+                                .map((food) => (
+                                    <Food key={String(food.id)} data={food} isAdmin={isAdmin}/>
+                                ))
+                            } 
                             </colunas-container>
                         </Section>    
                     </Content>

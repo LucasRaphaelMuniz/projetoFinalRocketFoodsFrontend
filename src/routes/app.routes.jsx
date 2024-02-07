@@ -21,7 +21,7 @@ export function AppRoutes(){
             <Route path="menu" element={<Menu isAdmin={isAdmin}/>} />
             <Route path="/prato/:id" element={<PratoPage isAdmin={isAdmin}/>} />
             <Route path="/novoprato" element={<NovoPrato isAdmin={isAdmin}/>} />
-            <Route path="/editarprato" element={<EditarPrato isAdmin={isAdmin}/>} />
+            <Route path="/editarprato/:id" element={<EditarPrato isAdmin={isAdmin}/>} />
         </Routes>
     )
 }

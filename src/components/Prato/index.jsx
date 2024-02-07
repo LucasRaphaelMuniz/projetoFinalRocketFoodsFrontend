@@ -11,9 +11,11 @@ import { Link } from 'react-router-dom'
 
 
 export function Prato({ data = {}, isAdmin, ...rest }){
+
+
   return(
     <Container {...rest} >
-        <img src={pratoInicio} alt="" />
+        <img src={imagem} alt="" />
         <h1>{data.nome}</h1>
         <h2>{data.descricao}</h2>
         <section>

@@ -32,7 +32,7 @@ export function Food({ data = {}, isAdmin, ...rest }) {
             <FiEdit/>
           </Link>
           
-          <img src={pratoInicio} alt="" />
+          <img  alt="imagem" />
   
           <Title>
               <h2>
