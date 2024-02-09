@@ -6,10 +6,15 @@ import carrinho from "../../assets/carrinho.svg"
 import admin from "../../assets/admin.svg"
 
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 
 
-export function Header({ isAdmin}) {
+
+export function Header({ isAdmin }) {
+
+
+
     return (
       <>
         {isAdmin ? (
@@ -35,7 +40,10 @@ export function Header({ isAdmin}) {
                 <img src={marca} alt="" />
                 <h1>food explorer</h1>
             </section>
-                <img src={carrinho} alt="" />
+            <div className='carrinhoQtde'>                
+              <img src={carrinho} alt=""/>
+              <span>{0} </span>
+            </div>
           </Container>
         )}
       </>

@@ -3,23 +3,27 @@ import { Container, Title} from "./styles";
 import { FiHeart, FiEdit  } from "react-icons/fi";
 import { RxCaretRight } from "react-icons/rx";
 
-
 import { Button } from '../../components/Button'
-import { useState, useEffect } from 'react'
-
 
 import pratoInicio from '../../assets/pratoInicio.svg'
 
-import { Quantidade } from '../../components/Quantidade'
+import { useState } from 'react'
 
 import { Link } from 'react-router-dom'
 
 import { api } from '../../services/api';
 
+import { Quantidade } from '../Quantidade'
 
 
 
 export function Food({ data = {}, isAdmin, ...rest }) {
+  const [number, setNumber] = useState(0);
+
+  function handleQtade() {
+    setNumber(0)
+  }
+
 
   return (
 
@@ -31,8 +35,8 @@ export function Food({ data = {}, isAdmin, ...rest }) {
           <Link to={`/editarprato/${data.id}`}>          
             <FiEdit/>
           </Link>
+            <img src={`${api.defaults.baseURL}/files/${data.imagem}`} alt="" />
           
-          <img  alt="imagem" />
   
           <Title>
               <h2>
@@ -40,6 +44,8 @@ export function Food({ data = {}, isAdmin, ...rest }) {
               </h2>
               <RxCaretRight/>
           </Title>
+
+
   
           <span>R$ {data.preco}</span>
           
@@ -50,14 +56,14 @@ export function Food({ data = {}, isAdmin, ...rest }) {
   
 
     ) : (
-      <Link to={`/prato/${data.id}`}>          
 
       <Container>
       <section>
         <FiHeart/>
       </section>
-
-      <img src={pratoInicio} alt="" />
+      <Link to={`/prato/${data.id}`} className="image-link">         
+        <img src={`${api.defaults.baseURL}/files/${data.imagem}`} alt="" />
+      </Link>
 
       <Title>
           <h2>
@@ -66,13 +72,13 @@ export function Food({ data = {}, isAdmin, ...rest }) {
           <RxCaretRight/>
       </Title>
 
+      <Quantidade number={number} setNumber={setNumber} />
+
       <span>R$ {data.preco}</span>
 
-      <Quantidade/>
+      <Button title="incluir" onClick={handleQtade} />
 
-      <Button title="incluir"/>
     </Container>
-    </Link>
     )
     }
   </>

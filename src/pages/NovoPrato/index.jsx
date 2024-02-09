@@ -9,7 +9,7 @@ import { Textarea } from '../../components/Textarea';
 
 import { ButtonText } from '../../components/ButtonText';
 import { Button } from '../../components/Button';
-import { PratoItem } from '../../components/PratoItem';
+import { IngredientesPrato } from '../../components/IngredientesPrato';
 
 import { RxCaretLeft } from "react-icons/rx";
 import { FiUpload } from "react-icons/fi";
@@ -155,14 +155,14 @@ export function NovoPrato({isAdmin}) {
                     <div className="tags">
                         {
                             ingredientes.map((ingredientes, index) => (
-                                <PratoItem 
+                                <IngredientesPrato 
                                     key={String(index)}
                                     value={ingredientes}
                                     onClick={() => {handleRemoveIngredientes(ingredientes)}}
                                 /> 
                             ))
                         }
-                        <PratoItem 
+                        <IngredientesPrato 
                             isNew 
                             onChange={e => setNewIngredientes(e.target.value)}
                             value={newIngredientes}
@@ -177,6 +177,8 @@ export function NovoPrato({isAdmin}) {
                 <Input
                     className="changeColor"
                     placeholder="R$ 00,00"
+                    type="number"
+
                     onChange={e => setPreco(e.target.value)}
 
                 /> 

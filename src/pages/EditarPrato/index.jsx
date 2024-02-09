@@ -10,7 +10,7 @@ import { Textarea } from '../../components/Textarea';
 
 import { ButtonText } from '../../components/ButtonText';
 import { Button } from '../../components/Button';
-import { PratoItem } from '../../components/PratoItem';
+import { IngredientesPrato } from '../../components/IngredientesPrato';
 
 import { RxCaretLeft } from "react-icons/rx";
 import { FiUpload } from "react-icons/fi";
@@ -34,37 +34,74 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
     const { user } = useAuth()
     const user_id = user.id
 
+    const [ food, setFood] = useState(null);
 
 
-    const [food, setFood] = useState([])
+    const [ imagem, setImagem] = useState(null)
+    const [ imagemFile, setImagemFile] = useState("")
+    const [ imagemUpdate, setImagemUpdate] = useState(null)
+    const [ imagemOriginal, setImagemOriginal] = useState(null)
 
-    useEffect(() => {
-        async function fetchFoods(){
-            const res = await api.get(`/foods/${params.id}`)
-            setFood(res.data)
-
-        }
-        fetchFoods()
-    }, [])
-
-
-    const [ imagem, setImagem] = useState(food.imagem)
-    const [ imagemFile, setAvatarFile] = useState(null)
     
 
 
-    const [ nome, setNome] = useState(food.nome)
-    const [ categoria, setCategoria] = useState(food.categoria)
-    const [ preco, setPreco] = useState(food.preco)   
-    const [ descricao, setDescricao] = useState(food.descricao)
+    const [ nome, setNome] = useState("")
+    const [ categoria, setCategoria] = useState("")
+    const [ preco, setPreco] = useState("")   
+    const [ descricao, setDescricao] = useState("")
 
 
     const [ingredientes, setIngredientes] = useState([])
     const [newIngredientes, setNewIngredientes] = useState("")
 
-    
 
-    
+    useEffect(() => {
+        async function fetchFoods(){
+            try {
+                const res = await api.get(`/foods/${params.id}`)
+            setFood(res.data)
+
+            } catch (error) {
+                console.error(error);
+                }
+        }
+        fetchFoods()
+    }, [params.id])
+
+    useEffect(() => {
+        if (food) {
+          setImagemFile(food.imagem);
+          setImagem(food.imagem);
+          setNome(food.nome);
+          setCategoria(food.categoria);
+          setPreco(food.preco);
+          setDescricao(food.descricao);
+      
+          const todosIngredientes = food.ingredientes.map((ingrediente) => ingrediente.ingredientes);
+          setIngredientes(todosIngredientes);
+
+          setImagemOriginal(food.imagem)
+
+        }
+      }, [food]); 
+
+
+    function handleAddIngredientes(){
+        setIngredientes(prevState => [...prevState, newIngredientes])
+        setNewIngredientes("")
+    }
+
+    function handleRemoveIngredientes(deleted){
+        setIngredientes((prevState) => prevState.filter((ingrediente) => ingrediente !== deleted))
+    }
+
+    function handleChangeImagem(e){
+        const file = e.target.files[0];
+        setImagem(file)
+        setImagemUpdate(file)
+        setImagemFile(file.nome)
+        
+    }
 
     async function handleRemove(){
         const confirm = window.confirm("Deseja realmente excluir este prato?") 
@@ -76,32 +113,6 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
         }
     }
 
-    useEffect(() => {
-        async function fetchFoods(){
-            const res = await api.get(`/foods/${params.id}`)
-            setFood(res.data)
-            setIngredientes(res.data.ingredientes); 
-        }
-        fetchFoods()
-    }, []);
-
-
-    function handleAddIngredientes(){
-        setIngredientes(prevState => [...prevState, newIngredientes])
-        setNewIngredientes("")
-    }
-
-    function handleRemoveIngredientes(deleted){
-        setIngredientes(prevState => prevState.filter(ingredientes => ingredientes !== deleted))
-    }
-
-    function handleChangeImagem(event){
-        const file = event.target.files[0];
-        setAvatarFile(file)
-
-        const imagePreview = URL.createObjectURL(file);
-        setImagem(imagePreview);
-    }
 
     
 
@@ -109,8 +120,16 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
 
     async function handleUpdate() {
 
+        if (imagem != imagemOriginal) {
+            const formData = new FormData();
+            formData.append("imagem", imagem)
+        
+            await api.patch(`/foods/imagem/${params.id}`, formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+        }
+
         await api.put(`/foods/editarprato/${params.id}`, {
-            imagem,
             nome,
             categoria,
             preco,
@@ -119,7 +138,7 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
             user_id
         })
 
-        alert("Prato")
+        alert("Prato atualizado com sucesso.")
         navigate("/")
 
     }
@@ -145,7 +164,7 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
                     <Image className="image">
                     <label htmlFor="image">
                     <FiUpload size={"2.4rem"} />
-                    <span>{"Selecione imagem para alterá-la"}</span>
+                    <span>{ imagemFile || "Selecione imagem para alterá-la"}</span>
 
                     <input 
                         id="image" 
@@ -160,7 +179,7 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
                 <Section title="Nome"/>     
                 <Input 
                     className="changeColor"
-                    placeholder={food.nome}
+                    placeholder={nome}
                     onChange={e => setNome(e.target.value)}
                 />     
 
@@ -169,19 +188,19 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
                         <label htmlFor="category">
                         <select
                             id="category"
-                            value={categoria || food.categoria}
+                            value={categoria || categoria}
                             onChange={(e) => setCategoria(e.target.value)}
                             
                             >
-                            <option value=""> {food.categoria} </option>
-                            {!food.categoria && <option value="">Selecionar</option>}
-                            {food.categoria != "Refeição" && (
+                            <option value=""> {categoria} </option>
+                            {!categoria && <option value="">Selecionar</option>}
+                            {categoria != "Refeição" && (
                                 <option value="refeicao">Refeição</option>
                             )}
-                            {food.categoria != "Sobremesa" && (
+                            {categoria != "Sobremesa" && (
                                 <option value="sobremesa">Sobremesa</option>
                             )}
-                            {food.categoria != "Bebida" && (
+                            {categoria != "Bebida" && (
                                 <option value="bebida">Bebida</option>
                             )}
                             </select>
@@ -193,33 +212,29 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
 
                 <Section title="Igredientes" > 
                     <div className="tags">
-
                         {
-                            ingredientes.map((ingredientes, index) => (
-                                <PratoItem 
+                            ingredientes.map((ingrediente, index) => (
+                                <IngredientesPrato 
                                     key={String(index)}
-                                    value={ingredientes}
-                                    onClick={() => {handleRemoveIngredientes(ingredientes)}}
+                                    value={ingrediente}
+                                    onClick={() => {handleRemoveIngredientes(ingrediente)}}
                                 /> 
                             ))
-
-                        }
-                        
-                        <PratoItem 
+                        }                        
+                        <IngredientesPrato 
                             isNew 
                             onChange={e => setNewIngredientes(e.target.value)}
                             value={newIngredientes}
                             onClick={handleAddIngredientes}
                         /> 
-                    </div>
-
-                    
+                    </div>                    
                 </Section> 
-
+                
                 <Section title="Preço">     
                 <Input
                     className="changeColor"
-                    placeholder={food.preco}
+                    placeholder={preco}
+                    type="number"
                     onChange={(e) => setPreco(e.target.value)}
 
                 /> 
@@ -227,7 +242,7 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
 
                 <Section title="Descrição">     
                 <Textarea
-                    placeholder={food.descricao}
+                    placeholder={descricao}
                     onChange={(e) => setDescricao(e.target.value)}
                     
                 /> 

@@ -55,8 +55,7 @@ export const Container = styled.div`
         }
 
         .admin {
-        display: block; /* ou qualquer outro valor que você deseja usar quando isAdmin é verdadeiro */
-        /* Outros estilos específicos para quando isAdmin é true */
+        display: block; 
         }
 
 `;

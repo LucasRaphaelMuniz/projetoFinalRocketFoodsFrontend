@@ -17,6 +17,8 @@ export const Container = styled.header`
     z-index: 1000;
     
     gap: 3.8rem;
+
+   
     
     > section {
         display: flex;
@@ -52,6 +54,32 @@ export const Container = styled.header`
         font-style: normal;
         font-weight: 400;
         line-height: 160%; /* 1.92rem */
+    }
+
+    .div {
+    position: relative;
+    display: inline-block;
+    
+    }
+
+    .carrinhoQtde > img {
+        display: block;
+    }
+
+    .carrinhoQtde > span {
+        position: relative;
+        width: 2.5rem;
+        height: 2.5rem; 
+        border-radius: 50%;
+        background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        font-size: 2rem;
+        top: -3.5rem;
+        right: -1.2rem;
+
     }
     
     

@@ -4,7 +4,7 @@ export const Container = styled.footer`
 
   display: flex;
   height: 29.2rem;
-  width: 21rem;
+  min-width: 21rem;
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
   border-radius: 0.8rem;
   border: 1px solid ${({ theme }) => theme.COLORS.DARK_300};
@@ -14,8 +14,16 @@ export const Container = styled.footer`
   align-items: center;
   position: relative;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 0.5rem;
 
+
+
+  .image-link > img {
+    max-width: 8.8rem;
+  }
+  img {
+    max-width: 8.8rem;
+  }
 
   section {
     display: block;
@@ -51,11 +59,7 @@ export const Container = styled.footer`
     }
 
    }
-  
 
-  > img {
-    max-width: 8.8rem;
-  }
 
   > span {
     line-height: 100%;

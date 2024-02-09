@@ -1,21 +1,33 @@
 
 import { Container } from "./styles";
-import pratoInicio from '../../assets/pratoInicio.svg'
 import { Button } from '../Button'
 import { Quantidade } from '../Quantidade'
 import { Tag } from '../Tag'
 import carrinho from "../../assets/carrinho.svg"
 
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+
+import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth'
+import { useState, useEffect } from 'react'
 
 
 
-export function Prato({ data = {}, isAdmin, ...rest }){
+
+
+
+
+export function Prato({ data, isAdmin, ...rest }){
+
+  const [number, setNumber] = useState(0);
+  function handleQtade() {
+    setNumber(0)
+  }
 
 
   return(
     <Container {...rest} >
-        <img src={imagem} alt="" />
+        <img src={`${api.defaults.baseURL}/files/${data.imagem}`} alt="" />
         <h1>{data.nome}</h1>
         <h2>{data.descricao}</h2>
         <section>
@@ -26,7 +38,8 @@ export function Prato({ data = {}, isAdmin, ...rest }){
         
         <div className={`seu-contenedor ${isAdmin ? 'admin' : ''}`}>
 
-          {!isAdmin && <Quantidade />}
+          {!isAdmin && <Quantidade number={number} setNumber={setNumber} />
+}
 
           {isAdmin ? (
             <Link to="/editarprato/:id">
@@ -37,10 +50,12 @@ export function Prato({ data = {}, isAdmin, ...rest }){
 
           ) : (
 
-            <Link to="/">
-              <Button title="">
-                <img src={carrinho} alt="" />
-                Pedir - R$ {"50,00"}
+            <Link to="">
+                
+              <Button title="" onClick={handleQtade}  >
+                <img src={carrinho} alt="" 
+                 />
+                Pedir - R$ {data.preco}
               </Button>
             </Link>
           )}
