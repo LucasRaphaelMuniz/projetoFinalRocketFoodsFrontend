@@ -34,4 +34,8 @@ export const Content = styled.div`
         height: 3.2rem;
     }
 
+    @media (min-width: 1024px) {
+        margin-left: 10rem;
+    }
+
 `

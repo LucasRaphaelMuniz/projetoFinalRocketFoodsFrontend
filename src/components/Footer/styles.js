@@ -14,7 +14,7 @@ export const Container = styled.footer`
   bottom: 0;
 
   padding: 10px;
-  z-index: 1000;
+  z-index: 1005;
   background-color: ${({ theme }) => theme.COLORS.DARK_600};
 
   @media (min-width: 1024px) {

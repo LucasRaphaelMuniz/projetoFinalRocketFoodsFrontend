@@ -20,6 +20,7 @@ export const Container = styled.footer`
 
   .image-link > img {
     max-width: 8.8rem;
+    margin-top: -3rem;
   }
   img {
     max-width: 8.8rem;
@@ -34,13 +35,17 @@ export const Container = styled.footer`
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
       z-index: 1000;
       position: relative;
-
       top: 1.3rem;
       right: -7rem;
-    }
-    
+      @media (min-width: 1024px) {
+        width: 3rem;
+        height: 3rem;
+        top: -1rem;
+        right: -11rem;
+      }
 
-    
+
+    }
     }
 
   > a {
@@ -54,13 +59,13 @@ export const Container = styled.footer`
     position: relative;
     top: -3rem;
     right: -7rem;
-
-    
+    @media (min-width: 1024px) {
+      top: -7rem;
+      right: -12rem;
     }
 
+    }
    }
-
-
   > span {
     line-height: 100%;
     color: ${({ theme }) => theme.COLORS.CAKE_200};
@@ -69,9 +74,50 @@ export const Container = styled.footer`
     font-style: normal;
     font-weight: 400;
 
+    @media (min-width: 1024px) {
+      font-size: 3.2rem;
+      display: flex;
+      margin-top: 1rem;
+    }
+
+  }
+
+  .formatDesktop {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
   border-radius: 0.5rem;
+
+  > h3 {
+    font-weight: 400;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    height: 46.2rem;
+    width: 30rem;
+    min-width: 30rem;
+
+    font-size: 1.6rem;
+    .image-link > img {
+      max-width: 17.6rem;
+    }
+    img {
+      max-width: 17.6rem;
+      margin-top: -5rem;
+
+    }
+      
+    }
+
+ 
+
+  
 `
 
 export const Title = styled.div`
@@ -93,5 +139,13 @@ export const Title = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    @media (min-width: 1024px) {
+      font-size: 2.4rem;
+
+      
+    }
   }
+
+
 `

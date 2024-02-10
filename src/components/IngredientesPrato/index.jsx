@@ -3,6 +3,8 @@ import { FiPlus, FiX } from "react-icons/fi";
 import { Container } from "./styles";
 
 export function IngredientesPrato({isNew, value, onClick, placeholder,...rest}) {
+  const meuInput = document.getElementById("meuInput");
+
 
   return (
     <Container isNew={isNew}>
@@ -12,6 +14,7 @@ export function IngredientesPrato({isNew, value, onClick, placeholder,...rest}) 
         value={value}
         readOnly={!isNew}
         {...rest}
+        placeholder="Adicionar"
       />
       <button
         type="button"

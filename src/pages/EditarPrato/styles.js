@@ -32,11 +32,12 @@ export const Container = styled.div`
   }
 
 
+
+
  
     
 
 `;
-
 
 
 export const Content = styled.div`
@@ -60,6 +61,8 @@ export const Content = styled.div`
         
     }
 
+    
+
     }
   
     .ordenarBotoes {
@@ -78,7 +81,84 @@ export const Content = styled.div`
       }
 
     }
+    @media (min-width: 1024px) {
+    margin-left: 10rem;
+    margin-right: 10rem;
 
+    section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      
+
+
+      .faixa1, .faixa2, .faixa3, .faixa4 {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: flex-end;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        margin-top: 2rem;      
+      }
+
+      .faixa1 {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        width: 100%;      
+
+        section:nth-of-type(1) {
+          max-width: 22.9rem;
+        }
+
+        section:nth-of-type(2) {
+          max-width: 100%;
+        }
+
+        section:nth-of-type(3) {
+          max-width: 36.4rem;
+
+        }
+        
+      }
+
+
+      .faixa2 {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+
+        section:nth-of-type(1) {
+          max-width: 100%;
+        }
+
+        section:nth-of-type(2) {
+          max-width: 25.1rem;
+        }
+
+        
+      }
+      
+
+
+  
+
+      .faixa4 {
+        display: flex;
+        justify-content: flex-end;
+
+        .ordenarBotoes {
+          width: 37rem;
+
+        }
+        
+      }
+    }
+
+  }
 
     
 
@@ -154,8 +234,7 @@ export const Category = styled.div`
     select {
       border: none;
       cursor: pointer;
-
-      
+      appearance: none;
       width: 100%;
       padding: 1.2rem 1.6rem;
       border-radius: 0.8rem;

@@ -23,6 +23,8 @@ import { useAuth } from '../../hooks/auth'
 
 import { useParams } from 'react-router-dom'
 import { api } from "../../services/api";
+import { useMediaQuery } from "react-responsive";
+
 
 
 
@@ -30,6 +32,8 @@ import { api } from "../../services/api";
 
 
 export function EditarPrato(isAdmin={isAdmin}, data) {
+    const isDesktop = useMediaQuery({ minWidth: 1024 });
+
     const params = useParams()
     const { user } = useAuth()
     const user_id = user.id
@@ -152,120 +156,127 @@ export function EditarPrato(isAdmin={isAdmin}, data) {
 
             <Content>
                 <Link to="/">                
-                    <ButtonText title="voltar" icon={RxCaretLeft}/>
+                    <ButtonText title="voltar" icon={RxCaretLeft} className="buttonBack" />
                 </Link>
 
 
 
-            <h1>Editar Prato</h1>
-            
-            <section>
-                <Section title="Imagem do prato">
-                    <Image className="image">
-                    <label htmlFor="image">
-                    <FiUpload size={"2.4rem"} />
-                    <span>{ imagemFile || "Selecione imagem para alterá-la"}</span>
-
-                    <input 
-                        id="image" 
-                        type="file"
-                        onChange={handleChangeImagem}
-
-                    />
-                    </label>
-                    </Image>         
-                </Section> 
+                <h1>Editar Prato</h1>
                 
-                <Section title="Nome"/>     
-                <Input 
-                    className="changeColor"
-                    placeholder={nome}
-                    onChange={e => setNome(e.target.value)}
-                />     
+                <section>
+                    <div className="faixa1">  
+                        <Section title="Imagem do prato" className="imagemPrato" >
+                            <Image className="image">
+                            <label htmlFor="image">
+                            <FiUpload size={"2.4rem"} />
+                            <span>{ "Selecione imagem"}</span>
 
-                <Section title="Categoria">
-                    <Category className="category">
-                        <label htmlFor="category">
-                        <select
-                            id="category"
-                            value={categoria || categoria}
-                            onChange={(e) => setCategoria(e.target.value)}
-                            
-                            >
-                            <option value=""> {categoria} </option>
-                            {!categoria && <option value="">Selecionar</option>}
-                            {categoria != "Refeição" && (
-                                <option value="refeicao">Refeição</option>
-                            )}
-                            {categoria != "Sobremesa" && (
-                                <option value="sobremesa">Sobremesa</option>
-                            )}
-                            {categoria != "Bebida" && (
-                                <option value="bebida">Bebida</option>
-                            )}
-                            </select>
+                            <input 
+                                id="image" 
+                                type="file"
+                                onChange={handleChangeImagem}
 
-                        <RiArrowDownSLine size={"2.4rem"} />
-                        </label>
-                    </Category>
-                </Section>
-
-                <Section title="Igredientes" > 
-                    <div className="tags">
-                        {
-                            ingredientes.map((ingrediente, index) => (
-                                <IngredientesPrato 
-                                    key={String(index)}
-                                    value={ingrediente}
-                                    onClick={() => {handleRemoveIngredientes(ingrediente)}}
+                            />
+                            </label>
+                            </Image>         
+                        </Section> 
+                        
+                        <Section title="Nome" className="nome">
+                            <Input 
+                                    className="changeColor"
+                                    placeholder={nome}
+                                    onChange={e => setNome(e.target.value)}
                                 /> 
-                            ))
-                        }                        
-                        <IngredientesPrato 
-                            isNew 
-                            onChange={e => setNewIngredientes(e.target.value)}
-                            value={newIngredientes}
-                            onClick={handleAddIngredientes}
-                        /> 
-                    </div>                    
-                </Section> 
-                
-                <Section title="Preço">     
-                <Input
-                    className="changeColor"
-                    placeholder={preco}
-                    type="number"
-                    onChange={(e) => setPreco(e.target.value)}
+                        </Section>    
+                                
+                        <Section title="Categoria" className="categoria">
+                            <Category className="category">
+                                <label htmlFor="category">
+                                <select
+                                    id="category"
+                                    value={categoria || categoria}
+                                    onChange={(e) => setCategoria(e.target.value)}
+                                    
+                                    >
+                                    <option value=""> {categoria} </option>
+                                    {!categoria && <option value="">Selecionar</option>}
+                                    {categoria != "Refeição" && (
+                                        <option value="refeicao">Refeição</option>
+                                    )}
+                                    {categoria != "Sobremesa" && (
+                                        <option value="sobremesa">Sobremesa</option>
+                                    )}
+                                    {categoria != "Bebida" && (
+                                        <option value="bebida">Bebida</option>
+                                    )}
+                                    </select>
 
-                /> 
-                </Section> 
+                                <RiArrowDownSLine size={"2.4rem"} />
+                                </label>
+                            </Category>
+                        </Section>
 
-                <Section title="Descrição">     
-                <Textarea
-                    placeholder={descricao}
-                    onChange={(e) => setDescricao(e.target.value)}
+                    </div>
                     
-                /> 
-                </Section> 
+                    <div className="faixa2">                    
+                        <Section title="Igredientes" > 
+                            <div className="tags">
+                                {
+                                    ingredientes.map((ingrediente, index) => (
+                                        <IngredientesPrato 
+                                            key={String(index)}
+                                            value={ingrediente}
+                                            onClick={() => {handleRemoveIngredientes(ingrediente)}}
+                                        /> 
+                                    ))
+                                }                        
+                                <IngredientesPrato 
+                                    isNew 
+                                    onChange={e => setNewIngredientes(e.target.value)}
+                                    value={newIngredientes}
+                                    onClick={handleAddIngredientes}
+                                /> 
+                            </div>                    
+                        </Section> 
+                        
+                        <Section title="Preço">     
+                        <Input
+                            className="changeColor"
+                            placeholder={`R$ ${preco}`}
+                            type="number"
+                            onChange={(e) => setPreco(e.target.value)}
 
-                <Link to="/" className="ordenarBotoes">
-                    <Button 
-                    className="changeColorButtonExcluir"
-                    title="Excluir"
-                    onClick={handleRemove}
-                    />
-          
+                        /> 
+                        </Section> 
+                    </div>
 
-                    <Button 
-                    className="changeColorButton"
-                    title="Salvar Alterações"
-                    onClick={handleUpdate}
-                    />
 
-                </Link>
+                    <Section title="Descrição">     
+                    <Textarea
+                        placeholder={descricao}
+                        onChange={(e) => setDescricao(e.target.value)}     
+                        className="textArea"                       
+                    /> 
+                    </Section> 
+
+                    <div className="faixa4">
+                        <Link to="/" className="ordenarBotoes">
+                            <Button 
+                            className="changeColorButtonExcluir"
+                            title="Excluir Prato"
+                            onClick={handleRemove}
+                            />         
+
+                            <Button 
+                            className="changeColorButton"
+                            title="Salvar Alterações"
+                            onClick={handleUpdate}
+                            />
+                        </Link>
+                    </div>
+
                 
-            </section>        
-        
+                </section>               
             
             </Content>
             <Footer/>

@@ -15,6 +15,8 @@ export const Container = styled.div`
   
   svg {
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
+    margin-top: 1.5rem;
+    
   }
 
 

@@ -11,18 +11,12 @@ export const Container = styled.div`
     "Content"
     "footer";
 
-    
-
-
 `;
-
-
 
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
     margin: 3.6rem;
-
 
     button {
       width: 100%;
@@ -31,7 +25,5 @@ export const Content = styled.div`
       
       font-weight: 300;
     }
-
-
 
 `

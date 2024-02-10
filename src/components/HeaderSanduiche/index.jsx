@@ -13,10 +13,7 @@ export function HeaderSanduiche({isAdmin}){
         <Container>
             <Link to="/">
                 <ButtonText title="Menu" icon={FiX} />
-            </Link>
-
-
-            
+            </Link>            
         </Container>
     )
 }

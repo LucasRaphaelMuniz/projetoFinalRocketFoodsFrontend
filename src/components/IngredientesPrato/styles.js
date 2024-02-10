@@ -2,11 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
   height: 3.2rem;
-  
-
-
 
   background-color: ${({ theme, isNew }) => (isNew ? "transparent" : theme.COLORS.LIGHT_600)};
 
@@ -32,6 +28,7 @@ export const Container = styled.div`
   }
 
   > input {
+    width: 100%;
     max-width: 13rem;
     height: 3.2rem;
     padding: 1rem 1.6rem;
@@ -43,5 +40,7 @@ export const Container = styled.div`
     &::placeholder{
         color: ${({ theme }) => theme.COLORS.LIGHT_500};
     }
+    
   }
+  
 `;

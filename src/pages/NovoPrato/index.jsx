@@ -110,78 +110,86 @@ export function NovoPrato({isAdmin}) {
             <h1>Novo Prato</h1>
             
             <section>
-                <Section title="Imagem do prato">
-                    <Image className="image">
-                    <label htmlFor="image">
-                    <FiUpload size={"2.4rem"} />
-                    <span>{"Selecione imagem"}</span>
+                <div className="faixa1">  
 
-                    <input 
-                        id="image" 
-                        type="file"
-                        onChange={handleChangeImagem}
-                    />
-                    </label>
-                    </Image>         
-                </Section> 
-                
-                <Section title="Nome"/>     
-                <Input 
-                    className="changeColor"
-                    placeholder="Ex.: Salada César"
-                    onChange={e => setNome(e.target.value)}
-                />     
+                    <Section title="Imagem do prato" className="imagemPrato">
+                        <Image className="image">
+                        <label htmlFor="image">
+                        <FiUpload size={"2.4rem"} />
+                        <span>{"Selecione imagem"}</span>
 
-                <Section title="Categoria">
-                    <Category className="category">
-                        <label htmlFor="category">
-                        <select 
-                            id="category" 
-                            onChange={e => setCategoria(e.target.value)}                       
-
-                        >
-                            <option value="">Selecionar</option>
-                            <option value="Refeição">Refeição</option>
-                            <option value="Sobremesa">Sobremesa</option>
-                            <option value="Bebida">Bebida</option>
-                        </select>
-
-                        <RiArrowDownSLine size={"2.4rem"} />
+                        <input 
+                            id="image" 
+                            type="file"
+                            onChange={handleChangeImagem}
+                        />
                         </label>
-                    </Category>
-                </Section>
-
-                <Section title="Igredientes" > 
-                    <div className="tags">
-                        {
-                            ingredientes.map((ingredientes, index) => (
-                                <IngredientesPrato 
-                                    key={String(index)}
-                                    value={ingredientes}
-                                    onClick={() => {handleRemoveIngredientes(ingredientes)}}
-                                /> 
-                            ))
-                        }
-                        <IngredientesPrato 
-                            isNew 
-                            onChange={e => setNewIngredientes(e.target.value)}
-                            value={newIngredientes}
-                            onClick={handleAddIngredientes}
-                        /> 
-                    </div>
-
+                        </Image>         
+                    </Section> 
                     
-                </Section>   
+                    <Section title="Nome" className="nome">    
+                        <Input 
+                            className="changeColor"
+                            placeholder="Ex.: Salada César"
+                            onChange={e => setNome(e.target.value)}
+                        />     
+                    </Section> 
 
-                <Section title="Preço"/>     
-                <Input
-                    className="changeColor"
-                    placeholder="R$ 00,00"
-                    type="number"
+                    <Section title="Categoria" className="categoria" >
+                        <Category className="category">
+                            <label htmlFor="category">
+                            <select 
+                                id="category" 
+                                onChange={e => setCategoria(e.target.value)}                       
 
-                    onChange={e => setPreco(e.target.value)}
+                            >
+                                <option value="">Selecionar</option>
+                                <option value="Refeição">Refeição</option>
+                                <option value="Sobremesa">Sobremesa</option>
+                                <option value="Bebida">Bebida</option>
+                            </select>
 
-                /> 
+                            <RiArrowDownSLine size={"2.4rem"} />
+                            </label>
+                        </Category>
+                    </Section>
+                </div>
+                <div className="faixa2">  
+                    <Section title="Igredientes" > 
+                        <div className="tags">
+                            {
+                                ingredientes.map((ingredientes, index) => (
+                                    <IngredientesPrato 
+                                        key={String(index)}
+                                        value={ingredientes}
+                                        onClick={() => {handleRemoveIngredientes(ingredientes)}}
+                                    /> 
+                                ))
+                            }
+                            <IngredientesPrato 
+                                isNew 
+                                onChange={e => setNewIngredientes(e.target.value)}
+                                value={newIngredientes}
+                                onClick={handleAddIngredientes}
+                            /> 
+                        </div>
+
+                        
+                    </Section>   
+
+                    <Section title="Preço"> 
+                        <Input
+                            className="changeColor"
+                            placeholder="R$ 00,00"
+                            type="number"
+
+                            onChange={e => setPreco(e.target.value)}
+
+                        /> 
+                    </Section>   
+
+                </div>
+
 
                 <Section title="Descrição"/>     
                 <Textarea
@@ -189,12 +197,16 @@ export function NovoPrato({isAdmin}) {
                     onChange={e => setDescricao(e.target.value)}
 
                 /> 
+            
+                <div className="faixa4">
 
-                <Button 
-                className="changeColorButton"
-                title="Salvar"
-                onClick={handleNewPrato}
-                />
+                    <Button 
+                    className="changeColorButton"
+                    title="Salvar alterações"
+                    onClick={handleNewPrato}
+                    />
+                </div>
+
 
             </section>        
         

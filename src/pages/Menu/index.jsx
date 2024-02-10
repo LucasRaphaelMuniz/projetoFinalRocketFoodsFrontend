@@ -8,8 +8,10 @@ import { ButtonText } from '../../components/ButtonText'
 
 import { Link, useNavigate } from 'react-router-dom'
 
-export function Menu({isAdmin}) {
 
+
+
+export function Menu({isAdmin}, setSearch) {
 
     const navigate = useNavigate();    
     
@@ -22,15 +24,15 @@ export function Menu({isAdmin}) {
 
     }
 
+
+
     return (
         <Container>
             <HeaderSanduiche
                 isAdmin={isAdmin}
             />
             <Content>
-                <Search
-                    onChange={() => setSearch(e.target.value)}
-                />
+                <Search/>
                 {isAdmin ? (
                 <Link to="/novoprato">
                     <ButtonText title="Novo Prato"/>
