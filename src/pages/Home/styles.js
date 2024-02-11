@@ -70,6 +70,8 @@ export const Container = styled.div`
 
     @media (min-width: 1024px) {
 
+      
+
       > main> div {
         
       header {
@@ -131,7 +133,6 @@ export const Content = styled.div`
     font-family: 'Poppins', sans-serif;
     padding: 1.6rem;
 
-
     colunas-container{
         display: flex;
         gap: 1.6rem;
@@ -148,7 +149,7 @@ export const Content = styled.div`
 
       margin-left: 10rem;
       margin-right: 10rem;
-
+      
       
       colunas-container{
         height: 48.2rem;
@@ -157,19 +158,70 @@ export const Content = styled.div`
         display: flex;
         flex-direction: row;
       
-
+        
         
       }   
+      .setaEsquerda1 > img {
+        width: 1.5rem;
+        position: absolute;
+        top: 80rem;
+        left: 13rem;
+        z-index: 1010;
+      }
+
+      .setaEsquerda2 > img {
+        width: 1.5rem;
+        position: absolute;
+        top: 141rem;
+        left: 13rem;
+        z-index: 1010;
+      }
+
+      .setaEsquerda3 > img {
+        width: 1.5rem;
+        position: absolute;
+        top: 203rem;
+        left: 13rem;
+        z-index: 1010;
+      }
+
+      .setaDireita1 > img {
+        width: 1.5rem;
+        position: absolute;
+        top: 80rem;
+        right: 13rem;
+        z-index: 1010;
+      }
+      .setaDireita2 > img {
+        width: 1.5rem;
+        position: absolute;
+        top: 141rem;
+        right: 13rem;
+        z-index: 1010;
+      }
+      .setaDireita3 > img {
+        width: 1.5rem;
+        position: absolute;
+        top: 203rem;
+        right: 13rem;
+        z-index: 1010;
+      }
+
       section > h2 {
+        position: relative;
         font-family: "Poppins", sans-serif;
         font-weight: 500;
         font-size: 3.2rem;
         line-height: 140%;
         margin-left: 10rem;
+        z-index: 1009;
+
 
         color: ${({ theme }) => theme.COLORS.GRAY_200};
         margin-bottom: 2.4rem;
       }
+      
+      
 
       colunas-container::before,
       colunas-container::after {
@@ -183,12 +235,12 @@ export const Content = styled.div`
       }
 
       colunas-container::before {
-        left: 0;
+        left: 6rem;
         background: linear-gradient(90deg, rgba( 0, 10, 15, 27) 0%, rgba( 0, 10, 15, 0) 100%);
       }
 
       colunas-container::after {
-        right: 0;
+        right: 6rem;
         background: linear-gradient(90deg, rgba( 0, 10, 15, 0) 0%, rgba( 0, 10, 15, 27.25) 100%);
       }
 

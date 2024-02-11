@@ -21,9 +21,12 @@ export const Container = styled.footer`
   .image-link > img {
     max-width: 8.8rem;
     margin-top: -3rem;
+    border-radius: 50%;
   }
   img {
-    max-width: 8.8rem;
+    height: 8.8rem;
+    border-radius: 50%;
+
   }
 
   section {

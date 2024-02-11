@@ -13,7 +13,7 @@ export const Container = styled.header`
     display: flex;
     position: sticky;
     top: 0;
-    z-index: 1005;
+    z-index: 2005;
     
     gap: 3.8rem;
 

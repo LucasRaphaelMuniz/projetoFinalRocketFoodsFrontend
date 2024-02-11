@@ -8,31 +8,16 @@ import { api } from "../../services/api";
 
 
 
-export function Search({ }) {
+export function Search({ setSearch }) {
   const navigate = useNavigate();
 
   function handleBack() {
     navigate(-1);
   }
-  const [search, setSearch] = useState("")
-
-  const [foods, setFoods] = useState([])
-
-
-  useEffect(() => {
-      async function fetchFoods(){
-      const res = await api.get(`/foods?search=${search}`);
-      setFoods(res.data); 
-      console.log(foods)
-      }
-      fetchFoods();
-  }, [search]);
   
   return (
     <Container>
-
-        <FiSearch onClick={handleBack}  />
-
+      <FiSearch onClick={handleBack}  />
       <Input
         placeholder="Busque por pratos ou ingredientes"
         onChange={(e) => setSearch(e.target.value)}

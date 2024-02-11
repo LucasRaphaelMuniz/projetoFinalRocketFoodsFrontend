@@ -24,7 +24,9 @@ import { Link, useNavigate } from 'react-router-dom'
 export function NovoPrato({isAdmin}) {
 
     const [ imagem, setImagem] = useState(null)
-    const [ imagemFile, setAvatarFile] = useState(null)
+    const [ imagemFile, setImagemFile] = useState("")
+    const [ imagemUpdate, setImagemUpdate] = useState(null)
+    const [ imagemOriginal, setImagemOriginal] = useState(null)
 
     const [ nome, setNome] = useState("")
     const [ categoria, setCategoria] = useState("")
@@ -47,12 +49,14 @@ export function NovoPrato({isAdmin}) {
         setIngredientes(prevState => prevState.filter(ingredientes => ingredientes !== deleted))
     }
 
-    function handleChangeImagem(event){
-        const file = event.target.files[0];
-        setAvatarFile(file)
-
-        const imagePreview = URL.createObjectURL(file);
-        setImagem(imagePreview);
+    function handleChangeImagem(e){
+        const file = e.target.files[0];
+        setImagem(file)
+        setImagemUpdate(file)
+        setImagemFile(file.nome)
+        const formData = new FormData();
+        formData.append("imagem", imagem)
+        console.log(imagem)
     }
 
     
@@ -80,7 +84,7 @@ export function NovoPrato({isAdmin}) {
         }
 
         await api.post("/foods", {
-            imagem,
+            imagem: (imagem.name),
             nome,
             categoria,
             preco,
@@ -88,9 +92,11 @@ export function NovoPrato({isAdmin}) {
             ingredientes
         })
 
+        console.log(imagem.name)
+
 
         alert("Prato criado com sucesso!")
-        navigate("/")
+        // navigate("/")
     }
 
     return (

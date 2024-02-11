@@ -19,93 +19,85 @@ import { Button } from '../Button'
 
 
 
-
 export function Header({ isAdmin, setSearch }) {
-const isDesktop = useMediaQuery({ minWidth: 1024 });
-const { signOut } = useAuth();
-const navigate = useNavigate();    
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const { signOut } = useAuth();
+  const navigate = useNavigate();    
 
-
-    async function handleLogoOut() { 
-        await signOut();
-        navigate("/");
-        window.location.reload();
-
-    }
-
-
-    return (
-      <>
-        {isAdmin ? (
-          <Container>
-            {!isDesktop && (
-              <Link to="/menu">
-                <img src={tresBarrasMenu} alt="" /> 
-              </Link>
-            )}
-
-            <section>
-                <img src={marca} alt="" />
-                <h1>food explorer</h1>
-                <h2>admin</h2>
-            </section>
-                <img src="" alt="" />
-            
-            {isDesktop && <Search className="barraPesquisa" setSearch={setSearch} /> }
-            
-            {isDesktop && 
-              <Link to="/novoprato">
-                <Button title="Novo Prato" className="botaoPedir" />
-              </Link>
-            }
-
-            {isDesktop && 
-              <Logout>
-                  <FiLogOut size={"3.2rem"} onClick={handleLogoOut} />
-              </Logout>
-            }
-
-
-        </Container>
-        ) : (
-          <Container>
-            {!isDesktop && (
-              <Link to="/menu">
-                <img src={tresBarrasMenu} alt="" /> 
-              </Link>
-            )
-            }
-            <section>
-                <img src={marca} alt="" />
-                <h1>food explorer</h1>
-            </section>
-
-            {isDesktop && <Search className="barraPesquisa" /> }
-            {isDesktop && 
-              <Button title="Pedir (0)" className="botaoPedir" >
-                <img src={carrinho} alt="" 
-                 />
-              </Button> 
-            }
-
-            {isDesktop && 
-              <Logout>
-                  <FiLogOut size={"3.2rem"} onClick={handleLogoOut} />
-              </Logout>
-            }
-
-
-
-            {!isDesktop && (
-                <div className='carrinhoQtde'>                
-                  <img src={carrinho} alt=""/>
-                  <span>{0} </span>
-                </div>
-              )
-            }
-            
-          </Container>
-        )}
-      </>
-    );
+  async function handleLogoOut() { 
+    await signOut();
+    navigate("/");
+    window.location.reload();
   }
+
+  return (
+    <>
+      {isAdmin ? (
+        <Container>
+          {!isDesktop && (
+            <Link to="/menu">
+              <img src={tresBarrasMenu} alt="" /> 
+            </Link>
+          )}
+
+          <section>
+            <img src={marca} alt="" />
+            <h1>food explorer</h1>
+            <h2>admin</h2>
+          </section>
+          <img src="" alt="" />
+        
+          {isDesktop && <Search setSearch={setSearch} />} {/* Adicione setSearch aqui */}
+          
+          {isDesktop && 
+            <Link to="/novoprato">
+              <Button title="Novo Prato" className="botaoPedir" />
+            </Link>
+          }
+
+          {isDesktop && 
+            <Logout>
+              <FiLogOut size={"3.2rem"} onClick={handleLogoOut} />
+            </Logout>
+          }
+        </Container>
+      ) : (
+        <Container>
+          {!isDesktop && (
+            <Link to="/menu">
+              <img src={tresBarrasMenu} alt="" /> 
+            </Link>
+          )
+          }
+          <section>
+            <img src={marca} alt="" />
+            <h1>food explorer</h1>
+          </section>
+
+          {isDesktop && <Search setSearch={setSearch} />} {/* Adicione setSearch aqui */}
+          {isDesktop && 
+            <Button title="Pedir (0)" className="botaoPedir" >
+              <img src={carrinho} alt="" 
+                />
+            </Button> 
+          }
+
+          {isDesktop && 
+            <Logout>
+              <FiLogOut size={"3.2rem"} onClick={handleLogoOut} />
+            </Logout>
+          }
+
+          {!isDesktop && (
+            <div className='carrinhoQtde'>                
+              <img src={carrinho} alt=""/>
+              <span>{0} </span>
+            </div>
+          )
+          }
+        </Container>
+      )}
+    </>
+  );
+}
+

@@ -18,6 +18,7 @@ import { useMediaQuery } from "react-responsive";
 
 import mobileBannerHome from "../../assets/mobileBannerHome.svg";
 import { api } from "../../services/api";
+import { Search } from "../../components/Search";
 
 
 
@@ -27,6 +28,7 @@ export function Home({isAdmin}, nome) {
 
     const [search, setSearch] = useState("")
     const [foods, setFoods] = useState([])
+    
 
 
     useEffect(() => {
@@ -36,7 +38,6 @@ export function Home({isAdmin}, nome) {
         }
         fetchFoods();
     }, [search]);
-
 
     return (
         <Container>
@@ -57,23 +58,31 @@ export function Home({isAdmin}, nome) {
                         </header>
                     </div>
                     <Content>
-
                         <Section title="Refeições">
+                                <div className="setaEsquerda1">
+                                    {isDesktop ? <img src={setaVoltar} alt=""/> : null}
+                                </div>
                             <colunas-container>
-
-                                {
-                                    foods
-                                    .filter(food => food.categoria === "Refeição")
-                                    .map((food) => (
-                                        <Food key={String(food.id)} data={food} isAdmin={isAdmin}/>
-                                    ))
-                                } 
-       
+                                    {
+                                        foods
+                                        .filter(food => food.categoria === "Refeição")
+                                        .map((food) => (
+                                            <Food key={String(food.id)} data={food} isAdmin={isAdmin}/>
+                                        ))
+                                    }                                     
                             </colunas-container>  
+                                <div className="setaDireita1">
+                                          
+                                    {isDesktop ? <img src={setaAvancar} alt="" /> : null}
 
+                                </div>
                         </Section>         
 
                         <Section title="Pratos principais">
+                            <div className="setaEsquerda2">
+                                {isDesktop ? <img src={setaVoltar} alt=""/> : null}
+
+                            </div>
                             <colunas-container>
 
                             {
@@ -85,9 +94,17 @@ export function Home({isAdmin}, nome) {
                             } 
 
                             </colunas-container>
+                            <div className="setaDireita2">
+                            {isDesktop ? <img src={setaAvancar} alt="" /> : null}
+
+                                  
+                            </div>
                         </Section>    
 
                         <Section title="Bebidas">
+                            <div className="setaEsquerda3">
+                            {isDesktop ? <img src={setaVoltar} alt=""/> : null}
+                            </div>
                             <colunas-container>
 
                             {
@@ -99,6 +116,10 @@ export function Home({isAdmin}, nome) {
                             } 
 
                             </colunas-container>
+                            <div className="setaDireita3">
+                            {isDesktop ? <img src={setaAvancar} alt="" /> : null}
+                               
+                            </div>
                         </Section>    
                     </Content>
                 </main>
