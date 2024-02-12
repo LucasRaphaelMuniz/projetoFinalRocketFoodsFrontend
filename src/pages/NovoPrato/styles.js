@@ -1,27 +1,25 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
+  display: grid;
 
-    width: 100%;
-    display: grid;
-    
-
-    grid-template-rows: 10rem auto 10rem;
-    grid-template-areas: 
+  grid-template-rows: 10rem auto 10rem;
+  grid-template-areas:
     "header"
     "Content"
     "footer";
 
-    .tags {
+  .tags {
     display: flex;
     flex-wrap: wrap;
     gap: 1.6rem;
- 
+
     background-color: ${({ theme }) => theme.COLORS.DARK_800};
-    
+
     padding: 0.8rem;
     border-radius: 0.8rem;
-    
+
     &:focus-within {
       outline: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
     }
@@ -30,50 +28,37 @@ export const Container = styled.div`
       background-color: transparent;
     }
   }
-
-
- 
-    
-
 `;
 
-
-
 export const Content = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 1.2rem 3.2rem 0;
-    color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 1.2rem 3.2rem 0;
+  color: ${({ theme }) => theme.COLORS.LIGHT_300};
+  font-family: "Poppins", sans-serif;
 
+  img {
+    font-size: 1.6rem;
+    margin-right: 1rem;
+  }
 
-    img {
-        font-size: 1.6rem;
-        margin-right: 1rem;
-    }
+  h1 {
+    height: 4.5rem;
+  }
 
-    h1 {
-        height: 4.5rem;
-    }
-
-    section {
+  section {
     margin-top: -0.8rem;
 
-
     .changeColor {
-        background-color: ${({ theme }) => theme.COLORS.DARK_800};
-        
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
     }
+  }
 
-    }
+  .changeColorButton {
+    background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
+  }
 
-    .changeColorButton {
-        background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
-        
-    }
-
-  
-    @media (min-width: 1024px) {
+  @media (min-width: 1024px) {
     margin-left: 10rem;
     margin-right: 10rem;
 
@@ -82,10 +67,10 @@ export const Content = styled.div`
       display: flex;
       flex-direction: column;
 
-      
-
-
-      .faixa1, .faixa2, .faixa3, .faixa4 {
+      .faixa1,
+      .faixa2,
+      .faixa3,
+      .faixa4 {
         display: flex;
         flex-direction: row;
         gap: 2rem;
@@ -93,14 +78,14 @@ export const Content = styled.div`
         text-align: center;
         margin: 0;
         padding: 0;
-        margin-top: 2rem;      
+        margin-top: 2rem;
       }
 
       .faixa1 {
         display: flex;
         align-items: stretch;
         justify-content: space-between;
-        width: 100%;      
+        width: 100%;
 
         section:nth-of-type(1) {
           max-width: 22.9rem;
@@ -112,11 +97,8 @@ export const Content = styled.div`
 
         section:nth-of-type(3) {
           max-width: 36.4rem;
-
         }
-        
       }
-
 
       .faixa2 {
         display: flex;
@@ -130,29 +112,19 @@ export const Content = styled.div`
         section:nth-of-type(2) {
           max-width: 25.1rem;
         }
-        
       }
-      
-
-
-  
 
       .faixa4 {
         display: flex;
-        justify-content: flex-end; 
+        justify-content: flex-end;
         width: 100%;
         Button {
           width: 17.2rem;
         }
       }
     }
-
   }
-
-
-    
-
-`
+`;
 
 export const Image = styled.div`
   padding: 1.2rem 3.2rem;
@@ -191,12 +163,14 @@ export const Image = styled.div`
       width: 100%;
     }
 
-    svg, span {
+    svg,
+    span {
       transition: filter 0.2s;
     }
 
     &:hover {
-      svg, span {
+      svg,
+      span {
         filter: brightness(0.9);
       }
     }
@@ -207,7 +181,7 @@ export const Image = styled.div`
       span {
         max-width: 13.3rem;
       }
-      
+
       input {
         max-width: 22.9rem;
       }
@@ -215,7 +189,7 @@ export const Image = styled.div`
   }
 `;
 
-export const Category = styled.div`
+export const Categoria = styled.div`
   > label {
     position: relative;
 
@@ -223,19 +197,24 @@ export const Category = styled.div`
       border: none;
       cursor: pointer;
 
-      
       width: 100%;
       padding: 1.2rem 1.6rem;
       border-radius: 0.8rem;
-      
+
       background-color: ${({ theme }) => theme.COLORS.DARK_900};
       color: ${({ theme }) => theme.COLORS.LIGHT_400};
-    
+
       font-weight: 400;
       font-size: 1.4rem;
       line-height: 160%;
     }
-    
+
+    &:hover {
+      svg {
+        filter: brightness(0.8);
+      }
+    }
+
     svg {
       color: ${({ theme }) => theme.COLORS.LIGHT_400};
 
@@ -245,13 +224,9 @@ export const Category = styled.div`
 
       cursor: pointer;
       pointer-events: none;
-      transition: filter 0.2s;
+      transition: filter 0.25s;
     }
 
-    &:hover {
-      svg {
-        filter: brightness(0.9);
-      }
-    }
+    
   }
 `;

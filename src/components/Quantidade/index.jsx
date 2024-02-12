@@ -2,7 +2,7 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 
 import { Container } from "./styles";
 
-export function Quantidade({ number, setNumber, updateQtdade }) {
+export function Quantidade({ number, setNumber }) {
   const incrementNumber = () => {
     setNumber(number + 1);
   };
@@ -15,9 +15,13 @@ export function Quantidade({ number, setNumber, updateQtdade }) {
 
   return (
     <Container>
-      <button onClick={decrementNumber}><FiMinus /></button>
+      <button onClick={decrementNumber}>
+        <FiMinus />
+      </button>
       <span>{number}</span>
-      <button onClick={incrementNumber}><FiPlus /></button>
+      <button onClick={incrementNumber}>
+        <FiPlus />
+      </button>
     </Container>
   );
 }

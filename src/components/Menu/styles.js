@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-
   display: grid;
 
   grid-template-rows: 10rem auto 10rem;
@@ -14,18 +13,14 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 2.4rem;
-  margin: 3.2rem 3.2rem 0;
-  color: ${({ theme }) => theme.COLORS.LIGHT_300};
-  font-family: "Poppins", sans-serif;
+  flex-direction: column;
+  margin: 3.6rem;
 
-  img {
-    width: 3.2rem;
-    height: 3.2rem;
-  }
+  button {
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
 
-  @media (min-width: 1024px) {
-    margin-left: 10rem;
+    font-weight: 300;
   }
 `;

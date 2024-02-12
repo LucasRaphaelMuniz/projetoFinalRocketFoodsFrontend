@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.footer`
-
   display: flex;
   height: 29.2rem;
   min-width: 21rem;
@@ -16,17 +15,10 @@ export const Container = styled.footer`
   justify-content: center;
   gap: 0.5rem;
 
-
-
   .image-link > img {
     max-width: 8.8rem;
     margin-top: -3rem;
     border-radius: 50%;
-  }
-  img {
-    height: 8.8rem;
-    border-radius: 50%;
-
   }
 
   section {
@@ -46,33 +38,30 @@ export const Container = styled.footer`
         top: -1rem;
         right: -11rem;
       }
-
-
     }
-    }
+  }
 
   > a {
     position: relative;
 
     > svg {
-    width: 2.4rem;
-    height: 2.2rem;
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    z-index: 1000;
-    position: relative;
-    top: -3rem;
-    right: -7rem;
-    @media (min-width: 1024px) {
-      top: -7rem;
-      right: -12rem;
+      width: 2.4rem;
+      height: 2.2rem;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      z-index: 1000;
+      position: relative;
+      top: -3rem;
+      right: -7rem;
+      @media (min-width: 1024px) {
+        top: -7rem;
+        right: -12rem;
+      }
     }
-
-    }
-   }
+  }
   > span {
     line-height: 100%;
     color: ${({ theme }) => theme.COLORS.CAKE_200};
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
@@ -82,7 +71,6 @@ export const Container = styled.footer`
       display: flex;
       margin-top: 1rem;
     }
-
   }
 
   .formatDesktop {
@@ -113,24 +101,18 @@ export const Container = styled.footer`
     img {
       max-width: 17.6rem;
       margin-top: -5rem;
-
     }
-      
-    }
-
- 
-
-  
-`
+  }
+`;
 
 export const Title = styled.div`
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    align-items: center;
-    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.COLORS.LIGHT_300};
 
-    > h2 {
+  > h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-size: 1.4rem;
@@ -138,17 +120,13 @@ export const Title = styled.div`
     text-align: center;
 
     width: 100%;
-    
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
     @media (min-width: 1024px) {
       font-size: 2.4rem;
-
-      
     }
   }
-
-
-`
+`;

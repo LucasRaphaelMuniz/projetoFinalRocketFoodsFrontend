@@ -43,7 +43,7 @@ export const Copyright = styled.span`
 
   font-size: 1.2rem;
   color: ${({ theme }) => theme.COLORS.LIGHT_200};
-  
+
   @media (min-width: 1024px) {
     font-size: 1.4rem;
   }

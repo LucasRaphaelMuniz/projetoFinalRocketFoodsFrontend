@@ -1,14 +1,18 @@
-import { FiPlus, FiX } from "react-icons/fi";
-
 import { Container } from "./styles";
 
-export function IngredientesPrato({isNew, value, onClick, placeholder,...rest}) {
-  const meuInput = document.getElementById("meuInput");
+import { FiPlus, FiX } from "react-icons/fi";
 
+export function IngredientesPrato({
+  isNew,
+  value,
+  onClick,
+  placeholder,
+  ...rest
+}) {
+  const meuInput = document.getElementById("meuInput");
 
   return (
     <Container isNew={isNew}>
-      
       <input
         type="text"
         value={value}
@@ -16,13 +20,9 @@ export function IngredientesPrato({isNew, value, onClick, placeholder,...rest}) 
         {...rest}
         placeholder="Adicionar"
       />
-      <button
-        type="button"
-        onClick={onClick}
-      >
-        {isNew ? <FiPlus/> : <FiX/>}
+      <button type="button" onClick={onClick}>
+        {isNew ? <FiPlus /> : <FiX />}
       </button>
-
     </Container>
   );
 }

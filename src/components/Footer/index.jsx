@@ -9,9 +9,7 @@ export function Footer() {
         <img src={marca} alt="Logo" />
       </Brand>
 
-      <Copyright>
-        © 2023 - Todos os direitos reservados.
-      </Copyright>
+      <Copyright>© 2023 - Todos os direitos reservados.</Copyright>
     </Container>
   );
 }

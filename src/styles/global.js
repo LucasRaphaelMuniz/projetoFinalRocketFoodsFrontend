@@ -12,8 +12,8 @@ export default createGlobalStyle`
   }
 
     body {
-        background-color: ${({ theme }) => theme.COLORS.DARK_400 };
-        color: ${({ theme }) => theme.COLORS.LIGHT_100 };
+        background-color: ${({ theme }) => theme.COLORS.DARK_400};
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
         -webkit-font-smoothing: antialiased;
     }
@@ -42,4 +42,4 @@ export default createGlobalStyle`
     button:hover, a:hover {
         filter: brightness(0.9);
     }
-`
+`;
