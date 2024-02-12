@@ -21,6 +21,11 @@ export const Container = styled.footer`
     border-radius: 50%;
   }
 
+  img {
+      max-width: 8.8rem;
+      margin-top: -5rem;
+    }
+
   section {
     display: block;
 
