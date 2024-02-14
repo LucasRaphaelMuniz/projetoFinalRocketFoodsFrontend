@@ -3,7 +3,7 @@
 
 No Food Explorer, você encontrará um ambiente interativo que simula a experiência de um restaurante fictício. Aqui está uma visão geral do que esperar:
 
-#####Visão Geral do Projeto
+##### Visão Geral do Projeto
 O Food Explorer é uma aplicação completa que integra front-end e back-end. Utilizando as tecnologias aprendidas no Explorer, foi criado seguindo o layout disponibilizado no Figma. Este layout abrange desde a visualização, criação, atualização e apagar os pratos, com suporte para dispositivos móveis.
 
 #### Personas Envolvidas
@@ -12,6 +12,7 @@ O Food Explorer é uma aplicação completa que integra front-end e back-end. Ut
 
 #### Deploy:
 **Link Deploy**: https://main--foodexplorermuniz.netlify.app/
+
 **Login ADM:** user@email.com ; **senha:** 123
 
 **Login User:** user@email.com ; **senha:** 123
@@ -19,6 +20,7 @@ O Food Explorer é uma aplicação completa que integra front-end e back-end. Ut
 
 #### Repositório:
 Back-end: https://github.com/LucasRaphaelMuniz/projetoFinalRocketFoodsBackend
+
 Front-end: https://github.com/LucasRaphaelMuniz/projetoFinalRocketFoodsFrontend
 
 
@@ -45,27 +47,53 @@ react-router-dom
 styled-components
 
 #### Como Utilizar
-#### Front-End:
-######Clone seu projeto
-`gh repo clone LucasRaphaelMuniz/projetoFinalRocketFoodsFrontend`
-###### Navegue até o diretório do front-end
-`cd projetoFinalRocketFoodsFrontend-main`
-
-###### Instale as dependências necessárias
-`npm install`
-
-###### Agora inicie o servidor do frontEnd
-`npm run dev`
 
 #### Front-End:
-######Clone seu projeto
-`gh repo clone LucasRaphaelMuniz/projetoFinalRocketFoodsBackend`
+
+###### Clone seu projeto
+
+```
+gh repo clone LucasRaphaelMuniz/projetoFinalRocketFoodsFrontend
+```
+
 ###### Navegue até o diretório do front-end
-`cd projetoFinalRocketFoodsFrontend-main`
+
+```
+cd projetoFinalRocketFoodsFrontend-main
+```
 
 ###### Instale as dependências necessárias
-`npm install`
+```
+npm install
+```
 
 ###### Agora inicie o servidor do frontEnd
-`npm run dev`
+```
+npm run dev
+```
+
+#### Front-End:
+
+###### Clone seu projeto
+
+```
+gh repo clone LucasRaphaelMuniz/projetoFinalRocketFoodsBackend
+```
+
+###### Navegue até o diretório do front-end
+
+```
+cd projetoFinalRocketFoodsFrontend-main
+```
+
+###### Instale as dependências necessárias
+
+```
+npm install
+```
+
+###### Agora inicie o servidor do frontEnd
+```
+npm run dev
+```
 
